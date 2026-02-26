@@ -18,12 +18,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://mrmahid-webportfolio.netlify.app"),
   title: "Md Mahid Raza (mrmahid) | Premium Web Designer & Digital Creator",
   description: "Advanced animated portfolio of Md Mahid Raza (mrmahid). Expert in Next.js, React, UI/UX, and 3D Web experiences. Hire me for premium web design.",
   keywords: ["mrmahid", "mr mahid", "md mahid raza", "mahid raza", "graphixel", "web designer", "ui ux designer", "next.js developer", "freelance web designer india", "mrmahid portfolio"],
   applicationName: "mrmahid Portfolio",
   authors: [{ name: "Md Mahid Raza" }],
   creator: "Md Mahid Raza",
+  alternates: {
+    canonical: "/",
+  },
+  verification: {
+    google: "google571f443fa7dfb842",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
