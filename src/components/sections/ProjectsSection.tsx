@@ -29,12 +29,12 @@ const projectsData = [
     },
     {
         id: 3,
-        title: 'mrmahid Branding',
-        category: 'Branding',
-        description: 'Complete brand identity design including logo, typography, and color systems.',
-        tools: ['Illustrator', 'Figma', 'Photoshop'],
-        image: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1000&auto=format&fit=crop',
-        link: '#',
+        title: 'Star Gym Website',
+        category: 'Website',
+        description: 'A fully functional, responsive, and SEO-optimized official website for Star Gym.',
+        tools: ['HTML', 'CSS', 'JavaScript'],
+        image: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1000&auto=format&fit=crop',
+        link: 'https://thestargym.netlify.app/',
     },
     {
         id: 4,
@@ -65,7 +65,7 @@ const projectsData = [
     }
 ];
 
-const categories = ['All', 'Website', 'E-commerce', 'Graphics', 'Branding'];
+const categories = ['All', 'Website', 'E-commerce', 'Graphics'];
 
 // Project Card Component with 3D Tilt
 const ProjectCard = ({ project }: { project: typeof projectsData[0] }) => {
