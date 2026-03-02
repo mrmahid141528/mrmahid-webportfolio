@@ -7,26 +7,22 @@ import { Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 const testimonials = [
     {
         id: 1,
-        name: 'Rahul Singhania',
-        role: 'CEO, Al-Azeem Industries',
-        text: 'Mahid completely transformed our B2B online presence. The WhatsApp ecommerce platform he built increased our organic orders by 40% within local markets. Absolutely premium work.',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&auto=format&fit=crop'
+        name: 'Star Gym Owner',           // 🔄 Real naam baad mein update karna
+        role: 'Owner, Star Gym',
+        text: 'Mahid ne hamari gym ki website professionally design ki. Design bilkul modern aur energetic hai. Visitors ka response kaafi acha raha aur naye members bhi join ho rahe hain. Highly recommended!',
+        image: '/icon.png',               // 🔄 Client photo baad mein update karna
+        rating: 5,
     },
     {
         id: 2,
-        name: 'Dr. Anjali Sharma',
-        role: 'Founder, Sharma Clinic',
-        text: 'The website design is sleek, modern, and perfectly reflects our brand. The patients love the easy booking system, and the overall load speed is incredibly fast.',
-        image: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=150&auto=format&fit=crop'
+        name: 'Coming Soon',              // 🔄 Agla client
+        role: 'Future Client',
+        text: 'We are looking forward to working with mrmahid on our next project. His attention to detail and premium design sense is unmatched in the industry.',
+        image: '/icon.png',
+        rating: 5,
     },
-    {
-        id: 3,
-        name: 'Vikram Das',
-        role: 'Owner, Urban Styles',
-        text: 'Working with mrmahid was the best decision for my clothing store. The attention to UI details and the smooth animations make my store feel like a top-tier brand.',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop'
-    }
 ];
+
 
 export default function TestimonialsSection() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -104,6 +100,14 @@ export default function TestimonialsSection() {
 
                                 {/* Quotation Mark Watermark */}
                                 <Quote className="absolute top-8 right-8 w-32 h-32 text-white/5 -rotate-12 pointer-events-none" />
+                                {/* Star Rating */}
+                                <div className="flex space-x-1 mb-6 justify-center sm:justify-start">
+                                    {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                                        <svg key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                        </svg>
+                                    ))}
+                                </div>
 
                                 <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed mb-10 relative z-10 italic">
                                     "{testimonials[currentIndex].text}"
