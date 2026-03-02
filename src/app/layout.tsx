@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 import LenisProvider from "@/components/layout/LenisProvider";
 import ThemeProvider from "@/components/layout/ThemeProvider";
+import Preloader from "@/components/ui/Preloader";
 import CustomCursor from "@/components/ui/CustomCursor";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/components/ui/Footer";
@@ -88,6 +89,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary/30 selection:text-primary z-0`}
       >
         <ThemeProvider>
+          <Preloader />
           <LenisProvider>
             <CustomCursor />
             <Navbar />
