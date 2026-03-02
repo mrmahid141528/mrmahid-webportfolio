@@ -1,13 +1,17 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme inline {
   --color-background: #0F172A;
   --color-foreground: #FAFAFA;
-  
-  --color-primary: #3B82F6; /* Electric Blue */
-  --color-secondary: #8B5CF6; /* Purple Gradient */
-  --color-accent: #06B6D4; /* Neon Cyan */
-  
+
+  --color-primary: #3B82F6;
+  /* Electric Blue */
+  --color-secondary: #8B5CF6;
+  /* Purple Gradient */
+  --color-accent: #06B6D4;
+  /* Neon Cyan */
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -17,8 +21,8 @@
 .dark {
   --bg-main: #0F172A;
   --bg-alt: #0a101d;
-  --bg-card: rgba(255,255,255,0.05);
-  --border-color: rgba(255,255,255,0.10);
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --border-color: rgba(255, 255, 255, 0.10);
   --text-primary: #FAFAFA;
   --text-secondary: #9CA3AF;
   --scrollbar-track: #0F172A;
@@ -30,8 +34,8 @@
 .light {
   --bg-main: #F1F5F9;
   --bg-alt: #E2E8F0;
-  --bg-card: rgba(0,0,0,0.03);
-  --border-color: rgba(0,0,0,0.10);
+  --bg-card: rgba(0, 0, 0, 0.03);
+  --border-color: rgba(0, 0, 0, 0.10);
   --text-primary: #0F172A;
   --text-secondary: #475569;
   --scrollbar-track: #E2E8F0;
@@ -49,18 +53,50 @@ body {
 }
 
 /* Section backgrounds respond to theme */
-.section-bg-main  { background-color: var(--bg-main); }
-.section-bg-alt   { background-color: var(--bg-alt); }
+.section-bg-main {
+  background-color: var(--bg-main);
+}
+
+.section-bg-alt {
+  background-color: var(--bg-alt);
+}
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--scrollbar-track); }
-::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3B82F6;
+}
 
 /* Lenis Recommended CSS */
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
-.lenis.lenis-stopped { overflow: hidden; }
-.lenis.lenis-smooth iframe { pointer-events: none; }
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

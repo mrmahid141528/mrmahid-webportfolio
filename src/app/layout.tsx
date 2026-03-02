@@ -2,13 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import LenisProvider from "@/components/layout/LenisProvider";
-import ThemeProvider from "@/components/layout/ThemeProvider";
-import Preloader from "@/components/ui/Preloader";
-import CustomCursor from "@/components/ui/CustomCursor";
-import Navbar from "@/components/ui/Navbar";
-import Footer from "@/components/ui/Footer";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -138,18 +131,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary/30 selection:text-primary z-0`}
       >
-        <ThemeProvider>
-          <Preloader />
-          <LenisProvider>
-            <CustomCursor />
-            <Navbar />
-            <WhatsAppButton />
-            <main className="relative z-10 w-full min-h-screen">
-              {children}
-            </main>
-            <Footer />
-          </LenisProvider>
-        </ThemeProvider>
+        {children}
       </body>
     </html>
   );
