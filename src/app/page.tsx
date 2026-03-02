@@ -2,16 +2,11 @@
 
 import { motion } from 'framer-motion';
 import HeroScene from '@/components/3d/HeroScene';
-import ProfileSection from '@/components/sections/ProfileSection';
-import ProjectsSection from '@/components/sections/ProjectsSection';
 import StatsSection from '@/components/sections/StatsSection';
-import WhyChooseMe from '@/components/sections/WhyChooseMe';
-import TestimonialsSection from '@/components/sections/TestimonialsSection';
-import BlogSection from '@/components/sections/BlogSection';
-import ContactSection from '@/components/sections/ContactSection';
 import MagneticButton from '@/components/ui/MagneticButton';
-import { ArrowUpRight, Download } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 // Typing effect helper
 const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) => {
@@ -19,24 +14,19 @@ const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) =
 
   useEffect(() => {
     let i = 0;
-    const typingInterval = setInterval(() => {
-      if (i < text.length) {
-        setDisplayedText(text.slice(0, i + 1));
-        i++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, 100);
-
-    // Add delay start
     const timeout = setTimeout(() => {
-      i = 0; // reset
+      const typingInterval = setInterval(() => {
+        if (i < text.length) {
+          setDisplayedText(text.slice(0, i + 1));
+          i++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, 100);
+      return () => clearInterval(typingInterval);
     }, delay * 1000);
 
-    return () => {
-      clearInterval(typingInterval);
-      clearTimeout(timeout);
-    };
+    return () => clearTimeout(timeout);
   }, [text, delay]);
 
   return <span>{displayedText}</span>;
@@ -45,6 +35,7 @@ const TypewriterText = ({ text, delay = 0 }: { text: string; delay?: number }) =
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
+
       {/* Hero Section */}
       <section id="home" className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         {/* 3D Background */}
@@ -84,18 +75,18 @@ export default function Home() {
             transition={{ delay: 3.5, duration: 0.8 }}
             className="flex flex-col sm:flex-row items-center gap-6"
           >
-            <a href="#projects" className="w-full sm:w-auto">
+            <Link href="/projects" className="w-full sm:w-auto">
               <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 px-8 py-4 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] w-full sm:w-auto">
                 <span>View Projects</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
               </MagneticButton>
-            </a>
+            </Link>
 
-            <a href="#contact" className="w-full sm:w-auto">
+            <Link href="/contact" className="w-full sm:w-auto">
               <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-medium hover:bg-white/10 transition-colors backdrop-blur-md w-full sm:w-auto">
                 <span>Hire Me</span>
               </MagneticButton>
-            </a>
+            </Link>
           </motion.div>
         </div>
 
@@ -111,26 +102,55 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Profile Section */}
-      <ProfileSection />
-
       {/* Stats Counter */}
       <StatsSection />
 
-      {/* Projects Section */}
-      <ProjectsSection />
+      {/* Quick Nav Cards */}
+      <section className="py-20 bg-[#0F172A]">
+        <div className="container mx-auto px-6 max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              Explore My <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Work</span>
+            </h2>
+            <p className="text-gray-400">Navigate to see everything I do</p>
+          </motion.div>
 
-      {/* Why Choose Me Section */}
-      <WhyChooseMe />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { label: 'About Me', desc: 'Skills, story & testimonials', href: '/about', gradient: 'from-primary to-accent', icon: '👤' },
+              { label: 'Projects', desc: 'Real websites I built', href: '/projects', gradient: 'from-accent to-secondary', icon: '💻' },
+              { label: 'Blog', desc: 'Tips on web design & growth', href: '/blog', gradient: 'from-secondary to-primary', icon: '📝' },
+              { label: 'Contact', desc: 'Let\'s build together', href: '/contact', gradient: 'from-primary to-secondary', icon: '🤝' },
+            ].map((card, i) => (
+              <motion.div
+                key={card.href}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <Link
+                  href={card.href}
+                  className="group block glass-panel border border-white/10 bg-white/5 backdrop-blur-sm rounded-2xl p-6 hover:shadow-[0_0_25px_rgba(59,130,246,0.12)] hover:-translate-y-2 transition-all duration-300 cursor-hover"
+                >
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.gradient} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
+                    {card.icon}
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">{card.label}</h3>
+                  <p className="text-gray-500 text-sm">{card.desc}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Testimonials Section */}
-      <TestimonialsSection />
-
-      {/* Blog Section */}
-      <BlogSection />
-
-      {/* Contact Section */}
-      <ContactSection />
     </div>
   );
 }
