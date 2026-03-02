@@ -11,59 +11,15 @@ gsap.registerPlugin(ScrollTrigger);
 const projectsData = [
     {
         id: 1,
-        title: 'Al-Azeem E-Commerce',
-        category: 'E-commerce',
-        description: 'A complete B2B eCommerce platform with WhatsApp integration and admin panel.',
-        tools: ['Next.js', 'Tailwind CSS', 'Supabase'],
-        image: 'https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=1000&auto=format&fit=crop',
-        link: '#',
-    },
-    {
-        id: 2,
-        title: 'Dr. Sharma Clinic',
+        title: 'Star Gym',
         category: 'Website',
-        description: 'Premium healthcare website with appointment scheduling and blog.',
-        tools: ['React', 'Framer Motion', 'Firebase'],
-        image: 'https://images.unsplash.com/photo-1538108149393-cebb51897b20?q=80&w=1000&auto=format&fit=crop',
-        link: '#',
-    },
-    {
-        id: 3,
-        title: 'Star Gym Website',
-        category: 'Website',
-        description: 'A fully functional, responsive, and SEO-optimized official website for Star Gym.',
+        description: 'A fully responsive and SEO-optimized official website built for Star Gym — a premium fitness center. The website features a stunning hero section, services overview, pricing plans, trainer profiles, a gallery, and a contact form. Designed to attract new members and generate leads through a bold, energetic visual identity that reflects the brand\'s commitment to strength and performance.',
         tools: ['HTML', 'CSS', 'JavaScript'],
-        image: 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=1000&auto=format&fit=crop',
-        link: 'https://thestargym.netlify.app/',
+        image: '/star-gym-preview.png',       // 📸 Replace with real screenshot later
+        link: '#',                             // 🔗 Replace with live URL later
     },
-    {
-        id: 4,
-        title: 'Urban Store UI',
-        category: 'Graphics',
-        description: 'Modern UI/UX design conceptualization for an urban clothing brand app.',
-        tools: ['Figma', 'Protopie'],
-        image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop',
-        link: '#',
-    },
-    {
-        id: 5,
-        title: 'TechStartup Landing',
-        category: 'Website',
-        description: 'High-converting landing page with 3D interactions and scroll animations.',
-        tools: ['Next.js', 'Three.js', 'GSAP'],
-        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000&auto=format&fit=crop',
-        link: '#',
-    },
-    {
-        id: 6,
-        title: 'Local Mart Dashboard',
-        category: 'E-commerce',
-        description: 'Inventory and sales management dashboard for local retailers.',
-        tools: ['React', 'Tailwind', 'Node.js'],
-        image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop',
-        link: '#',
-    }
 ];
+
 
 const categories = ['All', 'Website', 'E-commerce', 'Graphics'];
 
