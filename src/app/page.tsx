@@ -7,6 +7,7 @@ import ProjectsSection from '@/components/sections/ProjectsSection';
 import StatsSection from '@/components/sections/StatsSection';
 import WhyChooseMe from '@/components/sections/WhyChooseMe';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
+import BlogSection from '@/components/sections/BlogSection';
 import ContactSection from '@/components/sections/ContactSection';
 import MagneticButton from '@/components/ui/MagneticButton';
 import { ArrowUpRight, Download } from 'lucide-react';
@@ -124,6 +125,9 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <TestimonialsSection />
+
+      {/* Blog Section */}
+      <BlogSection />
 
       {/* Contact Section */}
       <ContactSection />
