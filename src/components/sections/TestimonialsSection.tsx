@@ -10,7 +10,7 @@ const testimonials = [
         name: 'Star Gym Owner',           // 🔄 Real naam baad mein update karna
         role: 'Owner, Star Gym',
         text: 'Mahid ne hamari gym ki website professionally design ki. Design bilkul modern aur energetic hai. Visitors ka response kaafi acha raha aur naye members bhi join ho rahe hain. Highly recommended!',
-        image: '/icon.png',               // 🔄 Client photo baad mein update karna
+        image: '/skeleton.svg',               // 🔄 Client photo baad mein update karna
         rating: 5,
     },
     {

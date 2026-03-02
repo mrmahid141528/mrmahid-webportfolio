@@ -16,7 +16,7 @@ const projectsData = [
         description: 'A fully responsive and SEO-optimized official website built for Star Gym — a premium fitness center. The website features a stunning hero section, services overview, pricing plans, trainer profiles, a gallery, and a contact form. Designed to attract new members and generate leads through a bold, energetic visual identity that reflects the brand\'s commitment to strength and performance.',
         tools: ['HTML', 'CSS', 'JavaScript'],
         image: '/star-gym-preview.png',       // 📸 Replace with real screenshot later
-        link: '#',                             // 🔗 Replace with live URL later
+        link: 'https://stargym-wbsite.onrender.com/index.html', // 🔗 Live URL
     },
 ];
 
