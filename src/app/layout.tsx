@@ -21,28 +21,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mrmahid.com"),
-  title: "Md Mahid Raza (mrmahid) | Premium Web Designer & Digital Creator",
-  description: "Advanced animated portfolio of Md Mahid Raza (mrmahid). Expert in Next.js, React, UI/UX, and 3D Web experiences. Hire me for premium web design.",
-  keywords: ["mrmahid", "mr mahid", "md mahid raza", "mahid raza", "graphixel", "web designer", "ui ux designer", "next.js developer", "freelance web designer india", "mrmahid portfolio"],
+  metadataBase: new URL("https://www.mrmahid.com"),
+  title: {
+    default: "Md Mahid Raza (mrmahid) | Premium Web Designer & Next.js Developer",
+    template: "%s | Md Mahid Raza (mrmahid)",
+  },
+  description: "I build premium, high-converting digital experiences. Expert in Next.js, React, and modern UI/UX design. Based in West Bengal, India. Elevate your local business online today.",
+  keywords: ["mrmahid", "mr mahid", "md mahid raza", "mahid raza", "graphixel", "web designer india", "Next.js Developer", "freelance web designer west bengal", "ui/ux designer"],
   applicationName: "mrmahid Portfolio",
   authors: [{ name: "Md Mahid Raza" }],
   creator: "Md Mahid Raza",
   alternates: {
-    canonical: "/",
+    canonical: "https://www.mrmahid.com",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://mrmahid.com", // User can change this later when connecting custom domain
+    url: "https://www.mrmahid.com",
     title: "Md Mahid Raza (mrmahid) | Premium Web Designer",
-    description: "Advanced animated portfolio showcasing premium web design, 3D experiences, and digital creation by Md Mahid Raza (mrmahid).",
-    siteName: "mrmahid Studio",
+    description: "I build premium, high-converting digital experiences. Expert in Next.js, React, and modern UI/UX design.",
+    siteName: "Md Mahid Raza Portfolio",
+    images: [{
+      url: "/star-gym-preview.png", // Must be fully qualified for OG or relative to metadataBase
+      width: 1200,
+      height: 630,
+      alt: "Md Mahid Raza - Web Designer Portfolio",
+    }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Md Mahid Raza (mrmahid) | Premium Web Designer",
-    description: "Let's build your digital future. View the portfolio of Md Mahid Raza.",
+    title: "Md Mahid Raza | Premium Web Designer",
+    description: "Premium Web Design & Development services using modern Next.js stack.",
+    creator: "@mrmahid", // Optional: Update if you have a handle
+    images: ["https://www.mrmahid.com/star-gym-preview.png"],
   },
   robots: {
     index: true,
@@ -55,12 +66,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: '/icon.png',
-  },
   verification: {
-    google: 'LLSVmF1O8whBOvNEvSxX5Xa282TK_C1v5Z9qBVVdtRw',
-  },
+    google: "LLSVmF1O8whBOvNEvSxX5Xa282TK_C1v5Z9qBVVdtRw"
+  }
 };
 
 export default function RootLayout({
@@ -84,6 +92,48 @@ export default function RootLayout({
             gtag('config', 'G-KZK1VCQRP9');
           `}
         </Script>
+
+        {/* Global JSON-LD Schema (Person & WebSite) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.mrmahid.com/#website",
+                  "url": "https://www.mrmahid.com",
+                  "name": "Md Mahid Raza Portfolio",
+                  "description": "Premium Web Designer and Developer based in India.",
+                  "publisher": {
+                    "@id": "https://www.mrmahid.com/#person"
+                  }
+                },
+                {
+                  "@type": "Person",
+                  "@id": "https://www.mrmahid.com/#person",
+                  "name": "Md Mahid Raza",
+                  "url": "https://www.mrmahid.com",
+                  "image": "https://www.mrmahid.com/logo.png",
+                  "jobTitle": "Web Designer & Developer",
+                  "worksFor": {
+                    "@type": "Organization",
+                    "name": "Freelance"
+                  },
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "West Bengal",
+                    "addressCountry": "IN"
+                  },
+                  "sameAs": [
+                    "https://www.github.com/mrmahid141528" // Update with your LinkedIn/Twitter links later
+                  ]
+                }
+              ]
+            })
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-primary/30 selection:text-primary z-0`}
