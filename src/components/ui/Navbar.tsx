@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -31,7 +32,7 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${scrolled
-                ? 'py-4 bg-[#0F172A]/70 backdrop-blur-md border-b border-white/5 shadow-lg'
+                ? 'py-4 bg-[#0F172A]/70 dark:bg-[#0F172A]/70 backdrop-blur-md border-b border-white/5 shadow-lg'
                 : 'py-6 bg-transparent'
                 }`}
         >
@@ -63,14 +64,17 @@ export default function Navbar() {
                                 }`}
                         >
                             {item.label}
-                            {/* Active underline */}
                             <span className={`absolute -bottom-1 left-0 h-[2px] bg-primary rounded-full transition-all duration-300 ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'
                                 }`} />
                         </Link>
                     ))}
+
+                    {/* Theme Toggle */}
+                    <ThemeToggle />
+
                     <Link
                         href="/contact"
-                        className={`px-5 py-2.5 rounded-full border font-medium transition-all cursor-hover group backdrop-blur-sm ${isActive('/contact')
+                        className={`px-5 py-2.5 rounded-full border font-medium transition-all cursor-hover backdrop-blur-sm ${isActive('/contact')
                                 ? 'bg-primary border-primary text-white'
                                 : 'bg-white/5 border-white/10 hover:border-primary/50 text-white hover:bg-primary/10'
                             }`}
@@ -80,18 +84,21 @@ export default function Navbar() {
                 </nav>
 
                 {/* Mobile menu toggle button */}
-                <button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="md:hidden flex flex-col space-y-1.5 cursor-hover p-2 relative z-50"
-                    aria-label="Toggle menu"
-                >
-                    <span className={`w-6 h-0.5 bg-white block rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                    <span className={`w-6 h-0.5 bg-white block rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`bg-white block rounded-full transition-all duration-300 ${mobileMenuOpen ? 'w-6 -rotate-45 -translate-y-2' : 'w-4 self-end'}`} style={{ height: '2px' }}></span>
-                </button>
+                <div className="md:hidden flex items-center gap-3 relative z-50">
+                    <ThemeToggle />
+                    <button
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                        className="flex flex-col space-y-1.5 cursor-hover p-2"
+                        aria-label="Toggle menu"
+                    >
+                        <span className={`w-6 h-0.5 bg-white block rounded-full transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                        <span className={`w-6 h-0.5 bg-white block rounded-full transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+                        <span className={`w-4 self-end bg-white block rounded-full transition-all duration-300 ${mobileMenuOpen ? 'w-6 -rotate-45 -translate-y-2' : ''}`} style={{ height: '2px' }}></span>
+                    </button>
+                </div>
 
                 {/* Mobile Menu Overlay */}
-                <div className={`fixed inset-0 bg-[#0F172A] z-40 transition-all duration-500 flex flex-col items-center justify-center space-y-8 min-h-screen ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+                <div className={`fixed inset-0 bg-[#0F172A] dark:bg-[#0F172A] z-40 transition-all duration-500 flex flex-col items-center justify-center space-y-8 min-h-screen ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
                     {navLinks.map((item) => (
                         <Link
                             key={item.label}
