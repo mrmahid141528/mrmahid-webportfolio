@@ -1,4 +1,4 @@
-import { Github, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Github, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 import Image from 'next/image';
 
 export default function Footer() {
@@ -27,6 +27,7 @@ export default function Footer() {
                             { icon: Twitter, href: "#" },
                             { icon: Linkedin, href: "#" },
                             { icon: Instagram, href: "https://www.instagram.com/mrmahid141?igsh=MTg5djc3ZWs2dmYwcw==" },
+                            { icon: Youtube, href: "https://youtube.com/@mrmahid9783?si=r8r7FMEK5W4v171R" },
                         ].map((social, index) => {
                             const Icon = social.icon;
                             return (
