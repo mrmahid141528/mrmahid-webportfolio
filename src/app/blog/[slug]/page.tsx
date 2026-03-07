@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Clock, Tag } from "lucide-react";
+import { ArrowLeft, Clock, Tag, MessageCircle, Instagram, Youtube } from "lucide-react";
 import type { Metadata, ResolvingMetadata } from 'next';
 
 type Props = {
@@ -197,12 +197,58 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
 
                 {/* Footer Call to Action */}
-                <div className="mt-24 p-8 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md text-center">
-                    <h3 className="text-2xl font-bold text-white mb-4">Want to apply these insights to your business?</h3>
-                    <p className="text-gray-400 mb-8 max-w-xl mx-auto">Let&apos;s build a premium website that drives real results for your brand.</p>
-                    <Link href="/contact" className="inline-block px-8 py-4 bg-primary text-white rounded-full font-semibold hover:bg-accent hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] transition-all duration-300">
-                        Discuss Your Project
-                    </Link>
+                <div className="mt-20 p-8 md:p-12 rounded-3xl border border-primary/20 bg-gradient-to-br from-[#0F172A] via-primary/5 to-accent/10 relative overflow-hidden text-center shadow-[0_0_40px_rgba(6,182,212,0.15)]">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[80px] -z-10" />
+                    <div className="absolute top-0 left-0 w-64 h-64 bg-accent/20 rounded-full blur-[80px] -z-10" />
+
+                    {/* Pulsing Dot */}
+                    <div className="inline-flex items-center justify-center mb-6">
+                        <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <span className="ml-2 text-green-400 font-medium text-sm tracking-widest uppercase">Available for new projects</span>
+                    </div>
+
+                    <h3 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                        Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Dominate</span> Your Market Online? 🚀
+                    </h3>
+
+                    <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+                        Your business deserves more than just a basic template. Agar aap apne brand ke liye ek <strong className="text-white">high-performing, premium website</strong> banwana chahte hain jo visitors ko customers mein badle, toh der mat kijiye! Let's discuss your vision today.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-4">
+                        {/* WhatsApp CTA */}
+                        <a
+                            href="https://wa.me/917865055431"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,197,94,0.3)]"
+                        >
+                            <MessageCircle className="w-5 h-5 animate-pulse" /> Message on WhatsApp
+                        </a>
+
+                        {/* Instagram CTA */}
+                        <a
+                            href="https://www.instagram.com/mrmahid141?igsh=MTg5djc3ZWs2dmYwcw=="
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)]"
+                        >
+                            <Instagram className="w-5 h-5" /> Follow on Instagram
+                        </a>
+
+                        {/* YouTube CTA */}
+                        <a
+                            href="https://youtube.com/@mrmahid9783?si=r8r7FMEK5W4v171R"
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(220,38,38,0.3)]"
+                        >
+                            <Youtube className="w-5 h-5" /> Subscribe YouTube
+                        </a>
+                    </div>
                 </div>
             </article>
         </main>
