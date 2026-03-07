@@ -26,7 +26,7 @@ export default function Footer() {
                             { icon: Github, href: "#" },
                             { icon: Twitter, href: "#" },
                             { icon: Linkedin, href: "#" },
-                            { icon: Instagram, href: "#" },
+                            { icon: Instagram, href: "https://www.instagram.com/mrmahid141?igsh=MTg5djc3ZWs2dmYwcw==" },
                         ].map((social, index) => {
                             const Icon = social.icon;
                             return (
