@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Clock, Tag, MessageCircle, Instagram, Youtube } from "lucide-react";
+import { ArrowLeft, Clock, Tag, MessageCircle, Instagram, Youtube, Facebook, MessageSquare, Share2, BookOpen } from "lucide-react";
 import type { Metadata, ResolvingMetadata } from 'next';
 
 type Props = {
@@ -105,6 +105,21 @@ export default async function BlogPostPage({ params }: Props) {
         year: 'numeric',
     });
 
+    // Approximate reading time
+    const wordCount = JSON.stringify(post.body || "").length / 5;
+    const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+    // Fetch related articles
+    const relatedPostsQuery = `*[_type == "post" && slug.current != $slug] | order(publishedAt desc)[0...3]{
+      title,
+      "slug": slug.current,
+      publishedAt,
+      excerpt,
+      "mainImage": mainImage.asset->url,
+      "category": categories[0]->title
+    }`;
+    const relatedPosts = await client.fetch(relatedPostsQuery, { slug: resolvedParams.slug });
+
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Article',
@@ -152,6 +167,10 @@ export default async function BlogPostPage({ params }: Props) {
                             <Clock className="w-4 h-4" />
                             {postDate}
                         </span>
+                        <span className="flex items-center gap-1.5 text-sm text-gray-400">
+                            <BookOpen className="w-4 h-4" />
+                            {readingTime} min read
+                        </span>
                     </div>
 
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
@@ -195,6 +214,72 @@ export default async function BlogPostPage({ params }: Props) {
                         components={portableTextComponents}
                     />
                 </div>
+
+                {/* Share Article Section */}
+                <div className="mt-16 pt-8 border-t border-white/10 flex flex-col items-center">
+                    <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                        <Share2 className="w-5 h-5 text-primary" /> Share this Article
+                    </h4>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <a
+                            href={`https://wa.me/?text=Check out this article: https://mrmahid.com/blog/${resolvedParams.slug}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                        >
+                            <MessageCircle className="w-5 h-5" /> WhatsApp
+                        </a>
+                        <a
+                            href={`https://www.facebook.com/sharer/sharer.php?u=https://mrmahid.com/blog/${resolvedParams.slug}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600/10 text-blue-500 hover:bg-blue-600 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                        >
+                            <Facebook className="w-5 h-5" /> Facebook
+                        </a>
+                        <a
+                            href={`fb-messenger://share/?link=https://mrmahid.com/blog/${resolvedParams.slug}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                        >
+                            <MessageSquare className="w-5 h-5" /> Messenger
+                        </a>
+                        <a
+                            href={`https://www.instagram.com/mrmahid141?igsh=MTg5djc3ZWs2dmYwcw==`}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-pink-500/10 text-pink-500 hover:bg-pink-500 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                        >
+                            <Instagram className="w-5 h-5" /> Instagram
+                        </a>
+                    </div>
+                </div>
+
+                {/* Related Articles Section */}
+                {relatedPosts && relatedPosts.length > 0 && (
+                    <div className="mt-20 pt-16 border-t border-white/10">
+                        <h3 className="text-3xl font-bold text-white mb-10 text-center">Read Next</h3>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            {relatedPosts.map((rPost: any) => (
+                                <Link href={`/blog/${rPost.slug}`} key={rPost.slug} className="group flex flex-col bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-colors">
+                                    <div className="h-40 relative overflow-hidden">
+                                        {rPost.mainImage ? (
+                                            <img src={rPost.mainImage} alt={rPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                        ) : (
+                                            <div className="w-full h-full bg-primary/20" />
+                                        )}
+                                    </div>
+                                    <div className="p-5 flex-1 flex flex-col">
+                                        <h4 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-primary transition-colors">{rPost.title}</h4>
+                                        <p className="text-sm text-gray-400 line-clamp-2 mb-4 flex-1">{rPost.excerpt}</p>
+                                        <span className="text-xs text-primary font-medium mt-auto">Read Article →</span>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
 
                 {/* Footer Call to Action */}
                 <div className="mt-20 p-8 md:p-12 rounded-3xl border border-primary/20 bg-gradient-to-br from-[#0F172A] via-primary/5 to-accent/10 relative overflow-hidden text-center shadow-[0_0_40px_rgba(6,182,212,0.15)]">
