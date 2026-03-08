@@ -72,11 +72,13 @@ const portableTextComponents = {
         image: ({ value }: any) => {
             return (
                 <div className="relative w-full h-[400px] my-10 rounded-2xl overflow-hidden border border-border">
-                    {/* Sanity images come with hotspot data, but we'll use a simple img tag for now */}
-                    <img
+                    <Image
                         src={value.asset.url || value.asset._ref}
                         alt={value.alt || 'Blog Image'}
-                        className="object-cover w-full h-full"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover"
+                        priority={false}
                     />
                 </div>
             )
@@ -216,10 +218,13 @@ export default async function BlogPostPage({ params }: Props) {
                 {/* Main Hero Image */}
                 {post.mainImage && (
                     <div className="w-full h-[400px] md:h-[500px] relative rounded-3xl overflow-hidden mb-16 border border-border shadow-2xl shadow-black/50">
-                        <img
+                        <Image
                             src={post.mainImage}
                             alt={post.title}
-                            className="w-full h-full object-cover"
+                            fill
+                            priority
+                            sizes="(max-width: 768px) 100vw, 80vw"
+                            className="object-cover"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                     </div>

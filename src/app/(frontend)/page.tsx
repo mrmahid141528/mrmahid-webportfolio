@@ -1,7 +1,11 @@
 "use client"
 
 import { motion } from 'framer-motion';
-import HeroScene from '@/components/3d/HeroScene';
+import dynamic from 'next/dynamic';
+const HeroScene = dynamic(() => import('@/components/3d/HeroScene'), {
+  ssr: false,
+  loading: () => <div className="absolute inset-0 bg-background/50 animate-pulse -z-10" />
+});
 import StatsSection from '@/components/sections/StatsSection';
 import MagneticButton from '@/components/ui/MagneticButton';
 import { ArrowUpRight } from 'lucide-react';

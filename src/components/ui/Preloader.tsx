@@ -7,25 +7,28 @@ export default function Preloader() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        // Automatically hide the preloader after 2 seconds
-        // This gives the "premium feel" while ensuring it doesn't block users for too long
+        // Minimal delay to let critical CSS paint and give a premium flash, but don't block Web Vitals
         const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
+            if (document.readyState === 'complete') {
+                setIsLoading(false);
+            }
+        }, 400);
 
-        return () => clearTimeout(timer);
-    }, []);
+        // Ultimate fallback
+        const maxTimer = setTimeout(() => setIsLoading(false), 800);
 
-    // Also listen for Next.js router load event just in case
-    useEffect(() => {
+        const handleLoad = () => setIsLoading(false);
         if (document.readyState === 'complete') {
-            // Already loaded
+            setIsLoading(false);
         } else {
-            window.addEventListener('load', () => {
-                // Keep it visible for at least a minimum time for smooth animation
-                setTimeout(() => setIsLoading(false), 800);
-            });
+            window.addEventListener('load', handleLoad);
         }
+
+        return () => {
+            clearTimeout(timer);
+            clearTimeout(maxTimer);
+            window.removeEventListener('load', handleLoad);
+        };
     }, []);
 
     return (
