@@ -1,5 +1,6 @@
 import { Github, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -47,11 +48,21 @@ export default function Footer() {
                     {/* Divider */}
                     <div className="w-24 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-                    {/* Copyright */}
-                    <p className="text-gray-500 text-sm">
-                        &copy; {currentYear} Md Mahid Raza. All rights reserved.
-                    </p>
+                    <div className="flex flex-col items-center gap-4">
+                        {/* Policy Links for AdSense */}
+                        <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+                            <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+                            <span className="text-gray-600 hidden sm:inline">•</span>
+                            <Link href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms & Conditions</Link>
+                            <span className="text-gray-600 hidden sm:inline">•</span>
+                            <Link href="/disclaimer" className="hover:text-primary transition-colors">Disclaimer</Link>
+                        </div>
 
+                        {/* Copyright */}
+                        <p className="text-gray-500 text-sm">
+                            &copy; {currentYear} Md Mahid Raza. All rights reserved.
+                        </p>
+                    </div>
                 </div>
             </div>
         </footer>
