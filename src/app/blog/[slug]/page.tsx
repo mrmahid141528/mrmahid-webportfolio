@@ -69,12 +69,12 @@ const portableTextComponents = {
         h2: ({ children }: any) => <h2 className="text-3xl font-bold mt-12 mb-4 text-foreground">{children}</h2>,
         h3: ({ children }: any) => <h3 className="text-2xl font-bold mt-8 mb-4 text-foreground">{children}</h3>,
         h4: ({ children }: any) => <h4 className="text-xl font-bold mt-6 mb-4 text-foreground">{children}</h4>,
-        blockquote: ({ children }: any) => <blockquote className="border-l-4 border-primary pl-6 my-8 italic text-gray-300 text-xl">{children}</blockquote>,
-        normal: ({ children }: any) => <p className="mb-6 leading-relaxed text-gray-300 text-lg">{children}</p>,
+        blockquote: ({ children }: any) => <blockquote className="border-l-4 border-primary pl-6 my-8 italic text-muted text-xl">{children}</blockquote>,
+        normal: ({ children }: any) => <p className="mb-6 leading-relaxed text-muted text-lg">{children}</p>,
     },
     list: {
-        bullet: ({ children }: any) => <ul className="list-disc list-inside mb-6 space-y-2 text-gray-300 text-lg">{children}</ul>,
-        number: ({ children }: any) => <ol className="list-decimal list-inside mb-6 space-y-2 text-gray-300 text-lg">{children}</ol>,
+        bullet: ({ children }: any) => <ul className="list-disc list-inside mb-6 space-y-2 text-muted text-lg">{children}</ul>,
+        number: ({ children }: any) => <ol className="list-decimal list-inside mb-6 space-y-2 text-muted text-lg">{children}</ol>,
     },
     marks: {
         strong: ({ children }: any) => <strong className="font-bold text-foreground">{children}</strong>,
@@ -203,12 +203,12 @@ export default async function BlogPostPage({ params }: Props) {
                             alt={post.title}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-60" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
                     </div>
                 )}
 
                 {/* Portable Text Content (The robust blog body) */}
-                <div className="prose prose-invert prose-lg max-w-none prose-a:text-primary hover:prose-a:text-accent prose-img:rounded-2xl">
+                <div className="prose dark:prose-invert prose-lg max-w-none prose-a:text-primary hover:prose-a:text-accent prose-img:rounded-2xl">
                     <PortableText
                         value={post.body}
                         components={portableTextComponents}
