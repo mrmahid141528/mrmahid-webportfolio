@@ -86,7 +86,7 @@ export default function RootLayout({
           `}
         </Script>
 
-        {/* Global JSON-LD Schema (Person & WebSite) */}
+        {/* Global JSON-LD Schema (Person, WebSite, & LocalBusiness) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -97,8 +97,8 @@ export default function RootLayout({
                   "@type": "WebSite",
                   "@id": "https://www.mrmahid.com/#website",
                   "url": "https://www.mrmahid.com",
-                  "name": "Md Mahid Raza Portfolio",
-                  "description": "Premium Web Designer and Developer based in India.",
+                  "name": "Md Mahid Raza | Premium Web Developer & Designer",
+                  "description": "I build high-converting websites, web applications, and digital experiences using Next.js, React, Node.js, and modern UI/UX design.",
                   "publisher": {
                     "@id": "https://www.mrmahid.com/#person"
                   }
@@ -109,10 +109,26 @@ export default function RootLayout({
                   "name": "Md Mahid Raza",
                   "url": "https://www.mrmahid.com",
                   "image": "https://www.mrmahid.com/logo.png",
-                  "jobTitle": "Web Designer & Developer",
+                  "jobTitle": "Full-Stack Web Developer & UI/UX Designer",
+                  "description": "Expert Web Developer specializing in Next.js, React, Node.js, Tailwind CSS, TypeScript, and SEO Optimization. I craft custom, premium websites that turn visitors into loyal customers.",
+                  "knowsAbout": [
+                    "Web Development",
+                    "Frontend Development",
+                    "Backend Development",
+                    "Next.js",
+                    "React.js",
+                    "Node.js",
+                    "TypeScript",
+                    "Tailwind CSS",
+                    "UI/UX Design",
+                    "SEO Optimization",
+                    "E-commerce Development",
+                    "CMS Integration (Sanity)",
+                    "Web Performance Optimization"
+                  ],
                   "worksFor": {
                     "@type": "Organization",
-                    "name": "Freelance"
+                    "name": "Freelance Web Developer"
                   },
                   "address": {
                     "@type": "PostalAddress",
@@ -120,8 +136,27 @@ export default function RootLayout({
                     "addressCountry": "IN"
                   },
                   "sameAs": [
-                    "https://www.github.com/mrmahid141528" // Update with your LinkedIn/Twitter links later
+                    "https://www.github.com/mrmahid141528",
+                    "https://www.instagram.com/mrmahid141",
+                    "https://youtube.com/@mrmahid9783?si=r8r7FMEK5W4v171R"
                   ]
+                },
+                {
+                  "@type": "LocalBusiness",
+                  "@id": "https://www.mrmahid.com/#localbusiness",
+                  "name": "Md Mahid Raza Web Development Services",
+                  "image": "https://www.mrmahid.com/star-gym-preview.png",
+                  "telephone": "+917865055431",
+                  "email": "mrmahid141@gmail.com",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": "Kolkata",
+                    "addressRegion": "West Bengal",
+                    "addressCountry": "IN"
+                  },
+                  "priceRange": "$$",
+                  "description": "Premium Web Design and Development agency based in West Bengal, India. Specializing in high-performance React and Next.js applications.",
+                  "url": "https://www.mrmahid.com"
                 }
               ]
             })
