@@ -35,7 +35,7 @@ export default function Preloader() {
                     initial={{ opacity: 1 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-                    className="fixed inset-0 z-[100] bg-[#0F172A] flex flex-col items-center justify-center overflow-hidden"
+                    className="fixed inset-0 z-[100] bg-background flex flex-col items-center justify-center overflow-hidden"
                 >
                     {/* Background glows */}
                     <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-primary/20 rounded-full blur-[100px] animate-pulse pointer-events-none" />
@@ -48,7 +48,7 @@ export default function Preloader() {
                             initial={{ scale: 0.8, rotate: 45, opacity: 0 }}
                             animate={{ scale: 1, rotate: 225, opacity: 1 }}
                             transition={{ duration: 1.5, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
-                            className="w-16 h-16 rounded-xl border border-primary/50 flex items-center justify-center bg-white/5 backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.3)] mb-8"
+                            className="w-16 h-16 rounded-xl border border-primary/50 flex items-center justify-center bg-card backdrop-blur-md shadow-[0_0_30px_rgba(59,130,246,0.3)] mb-8"
                         >
                             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-primary to-accent" />
                         </motion.div>
@@ -65,7 +65,7 @@ export default function Preloader() {
                                         ease: [0.76, 0, 0.24, 1],
                                         delay: index * 0.05
                                     }}
-                                    className={`text-2xl font-bold tracking-widest ${index > 6 ? 'text-primary' : 'text-white'}`}
+                                    className={`text-2xl font-bold tracking-widest ${index > 6 ? 'text-primary' : 'text-foreground'}`}
                                 >
                                     {char}
                                 </motion.span>

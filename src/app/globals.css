@@ -2,8 +2,12 @@
 @plugin "@tailwindcss/typography";
 
 @theme inline {
-  --color-background: #0F172A;
-  --color-foreground: #FAFAFA;
+  --color-background: var(--bg-main);
+  --color-foreground: var(--text-primary);
+  --color-card: var(--bg-card);
+  --color-border: var(--border-color);
+  --color-muted: var(--text-secondary);
+  --color-alt: var(--bg-alt);
 
   --color-primary: #3B82F6;
   /* Electric Blue */

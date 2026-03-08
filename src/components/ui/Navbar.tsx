@@ -32,7 +32,7 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${scrolled
-                ? 'py-4 bg-[#0F172A]/70 dark:bg-[#0F172A]/70 backdrop-blur-md border-b border-white/5 shadow-lg'
+                ? 'py-4 bg-background/70 dark:bg-background/70 backdrop-blur-md border-b border-white/5 shadow-lg'
                 : 'py-6 bg-transparent'
                 }`}
         >
@@ -59,8 +59,8 @@ export default function Navbar() {
                             key={item.label}
                             href={item.href}
                             className={`text-sm font-medium transition-colors cursor-hover relative group ${isActive(item.href)
-                                    ? 'text-white'
-                                    : 'text-gray-400 hover:text-white'
+                                    ? 'text-foreground'
+                                    : 'text-muted hover:text-foreground'
                                 }`}
                         >
                             {item.label}
@@ -75,8 +75,8 @@ export default function Navbar() {
                     <Link
                         href="/contact"
                         className={`px-5 py-2.5 rounded-full border font-medium transition-all cursor-hover backdrop-blur-sm ${isActive('/contact')
-                                ? 'bg-primary border-primary text-white'
-                                : 'bg-white/5 border-white/10 hover:border-primary/50 text-white hover:bg-primary/10'
+                                ? 'bg-primary border-primary text-foreground'
+                                : 'bg-card border-border hover:border-primary/50 text-foreground hover:bg-primary/10'
                             }`}
                     >
                         <span className="relative z-10">Hire Me</span>
@@ -98,13 +98,13 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile Menu Overlay */}
-                <div className={`fixed inset-0 bg-[#0F172A] dark:bg-[#0F172A] z-40 transition-all duration-500 flex flex-col items-center justify-center space-y-8 min-h-screen ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
+                <div className={`fixed inset-0 bg-background dark:bg-background z-40 transition-all duration-500 flex flex-col items-center justify-center space-y-8 min-h-screen ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}>
                     {navLinks.map((item) => (
                         <Link
                             key={item.label}
                             href={item.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className={`text-2xl font-bold tracking-widest transition-colors cursor-hover ${isActive(item.href) ? 'text-primary' : 'text-white hover:text-primary'
+                            className={`text-2xl font-bold tracking-widest transition-colors cursor-hover ${isActive(item.href) ? 'text-primary' : 'text-foreground hover:text-primary'
                                 }`}
                         >
                             {item.label}
@@ -113,7 +113,7 @@ export default function Navbar() {
                     <Link
                         href="/contact"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="px-8 py-3 mt-4 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-all cursor-hover shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+                        className="px-8 py-3 mt-4 rounded-full bg-primary text-foreground font-medium hover:bg-primary/90 transition-all cursor-hover shadow-[0_0_20px_rgba(59,130,246,0.3)]"
                     >
                         Hire Me
                     </Link>

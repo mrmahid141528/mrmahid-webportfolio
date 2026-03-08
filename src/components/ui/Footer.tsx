@@ -6,7 +6,7 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-[#0a101d] border-t border-white/5 pt-16 pb-8 text-center relative z-10">
+        <footer className="bg-alt border-t border-white/5 pt-16 pb-8 text-center relative z-10">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="flex flex-col items-center justify-center space-y-8">
 
@@ -37,7 +37,7 @@ export default function Footer() {
                                     href={social.href}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all cursor-hover"
+                                    className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted hover:text-foreground hover:bg-white/10 hover:border-white/20 transition-all cursor-hover"
                                 >
                                     <Icon className="w-4 h-4" />
                                 </a>
@@ -50,7 +50,7 @@ export default function Footer() {
 
                     <div className="flex flex-col items-center gap-4">
                         {/* Policy Links for AdSense */}
-                        <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-400">
+                        <div className="flex flex-wrap justify-center gap-4 text-sm text-muted">
                             <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link>
                             <span className="text-gray-600 hidden sm:inline">•</span>
                             <Link href="/terms-and-conditions" className="hover:text-primary transition-colors">Terms & Conditions</Link>

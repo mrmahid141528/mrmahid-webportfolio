@@ -65,7 +65,7 @@ const ProjectCard = ({ project }: { project: typeof projectsData[0] }) => {
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="group relative rounded-2xl overflow-hidden glass-panel border border-white/10 bg-white/5 backdrop-blur-sm cursor-hover h-full flex flex-col transform-style-3d hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-shadow duration-500"
+                className="group relative rounded-2xl overflow-hidden glass-panel border border-border bg-card backdrop-blur-sm cursor-hover h-full flex flex-col transform-style-3d hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-shadow duration-500"
             >
                 {/* Glow Hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 pointer-events-none" />
@@ -80,7 +80,7 @@ const ProjectCard = ({ project }: { project: typeof projectsData[0] }) => {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-80" />
 
                     <div className="absolute top-4 left-4">
-                        <span className="px-3 py-1 text-xs font-semibold bg-white/10 backdrop-blur-md rounded-full text-white border border-white/20">
+                        <span className="px-3 py-1 text-xs font-semibold bg-white/10 backdrop-blur-md rounded-full text-foreground border border-white/20">
                             {project.category}
                         </span>
                     </div>
@@ -88,8 +88,8 @@ const ProjectCard = ({ project }: { project: typeof projectsData[0] }) => {
 
                 {/* Content */}
                 <div className="p-6 relative z-10 flex flex-col flex-grow transform translate-z-10">
-                    <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
-                    <p className="text-gray-400 text-sm mb-6 flex-grow">{project.description}</p>
+                    <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{project.title}</h3>
+                    <p className="text-muted text-sm mb-6 flex-grow">{project.description}</p>
 
                     <div className="flex flex-wrap gap-2 mb-6">
                         {project.tools.map((tool, idx) => (
@@ -99,12 +99,12 @@ const ProjectCard = ({ project }: { project: typeof projectsData[0] }) => {
                         ))}
                     </div>
 
-                    <div className="flex items-center justify-between border-t border-white/10 pt-4 mt-auto">
-                        <a href={project.link} className="flex items-center space-x-2 text-sm text-gray-300 hover:text-white transition-colors cursor-hover">
+                    <div className="flex items-center justify-between border-t border-border pt-4 mt-auto">
+                        <a href={project.link} className="flex items-center space-x-2 text-sm text-gray-300 hover:text-foreground transition-colors cursor-hover">
                             <span>Live Preview</span>
                             <ExternalLink className="w-4 h-4" />
                         </a>
-                        <button className="text-gray-400 hover:text-white transition-colors cursor-hover">
+                        <button className="text-muted hover:text-foreground transition-colors cursor-hover">
                             <Github className="w-5 h-5" />
                         </button>
                     </div>
@@ -144,16 +144,16 @@ export default function ProjectsSection() {
     }, []);
 
     return (
-        <section id="projects" className="relative py-32 bg-[#0F172A] z-10" ref={sectionRef}>
+        <section id="projects" className="relative py-32 bg-background z-10" ref={sectionRef}>
             <div className="container mx-auto px-6 max-w-7xl">
 
                 {/* Header */}
                 <div ref={headerRef} className="flex flex-col items-center mb-16 text-center">
                     <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block">Portfolio</span>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
                         Featured <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">Works</span>
                     </h2>
-                    <p className="text-gray-400 max-w-2xl text-lg">
+                    <p className="text-muted max-w-2xl text-lg">
                         A selection of my recent projects. From complex web applications to stunning brand identities.
                     </p>
                 </div>
@@ -165,8 +165,8 @@ export default function ProjectsSection() {
                             key={cat}
                             onClick={() => setActiveFilter(cat)}
                             className={`px-6 py-2 rounded-full font-medium transition-all duration-300 cursor-hover border ${activeFilter === cat
-                                ? 'bg-primary border-primary text-white shadow-[0_0_15px_rgba(59,130,246,0.5)]'
-                                : 'bg-white/5 border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+                                ? 'bg-primary border-primary text-foreground shadow-[0_0_15px_rgba(59,130,246,0.5)]'
+                                : 'bg-card border-border text-muted hover:text-foreground hover:bg-white/10'
                                 }`}
                         >
                             {cat}
@@ -188,7 +188,7 @@ export default function ProjectsSection() {
 
                 {/* View All CTA */}
                 <div className="mt-16 flex justify-center">
-                    <button className="flex items-center space-x-2 text-primary font-medium hover:text-white transition-colors cursor-hover group">
+                    <button className="flex items-center space-x-2 text-primary font-medium hover:text-foreground transition-colors cursor-hover group">
                         <div className="w-12 h-[1px] bg-primary group-hover:bg-white transition-colors" />
                         <span>View All Projects</span>
                         <div className="w-12 h-[1px] bg-primary group-hover:bg-white transition-colors" />

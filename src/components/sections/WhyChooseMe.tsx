@@ -40,16 +40,16 @@ export default function WhyChooseMe() {
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
     return (
-        <section id="services" className="relative py-32 bg-[#0F172A] z-10" ref={ref}>
+        <section id="services" className="relative py-32 bg-background z-10" ref={ref}>
             <div className="container mx-auto px-6 max-w-7xl">
 
                 {/* Header */}
                 <div className="flex flex-col items-center mb-16 text-center">
                     <span className="text-secondary text-sm font-semibold tracking-widest uppercase mb-4 block">Advantages</span>
-                    <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
                         Why Choose <span className="text-primary">mrmahid</span>
                     </h2>
-                    <p className="text-gray-400 max-w-2xl text-lg">
+                    <p className="text-muted max-w-2xl text-lg">
                         I don't just build websites; I engineer digital experiences designed to grow your business and elevate your brand.
                     </p>
                 </div>
@@ -64,7 +64,7 @@ export default function WhyChooseMe() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                                 transition={{ duration: 0.6, delay: index * 0.15, ease: "easeOut" }}
-                                className="group relative p-8 rounded-3xl glass-panel border border-white/5 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-colors cursor-hover overflow-hidden"
+                                className="group relative p-8 rounded-3xl glass-panel border border-white/5 bg-card backdrop-blur-md hover:bg-white/10 transition-colors cursor-hover overflow-hidden"
                             >
                                 {/* Hover Glow Background */}
                                 <div className={`absolute -right-20 -top-20 w-48 h-48 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${feature.bgColor}`} />
@@ -74,8 +74,8 @@ export default function WhyChooseMe() {
                                         <Icon size={32} strokeWidth={1.5} />
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">{feature.title}</h3>
-                                        <p className="text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+                                        <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{feature.title}</h3>
+                                        <p className="text-muted leading-relaxed group-hover:text-gray-300 transition-colors">
                                             {feature.description}
                                         </p>
                                     </div>

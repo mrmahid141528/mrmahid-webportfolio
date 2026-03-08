@@ -47,14 +47,14 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8 inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+            className="mb-8 inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-border bg-card backdrop-blur-md"
           >
             <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
             <span className="text-sm text-gray-300 tracking-wide uppercase">MD MAHID Raza</span>
           </motion.div>
 
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-tight max-w-5xl">
-            <span className="block text-white opacity-90"><TypewriterText text="I Build" /></span>
+            <span className="block text-foreground opacity-90"><TypewriterText text="I Build" /></span>
             <span className="block bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent pb-2">
               <TypewriterText text="Digital Experiences" delay={1} />
             </span>
@@ -64,7 +64,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 3, duration: 1 }}
-            className="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl font-light"
+            className="text-lg md:text-xl text-muted mb-10 max-w-2xl font-light"
           >
             Helping Local Businesses Go Digital. Premium web design that converts visitors into clients.
           </motion.p>
@@ -76,14 +76,14 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center gap-6"
           >
             <Link href="/projects" className="w-full sm:w-auto">
-              <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 px-8 py-4 bg-primary text-white rounded-full font-medium hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] w-full sm:w-auto">
+              <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 px-8 py-4 bg-primary text-foreground rounded-full font-medium hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(59,130,246,0.6)] w-full sm:w-auto">
                 <span>View Projects</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform" />
               </MagneticButton>
             </Link>
 
             <Link href="/contact" className="w-full sm:w-auto">
-              <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 px-8 py-4 bg-white/5 border border-white/10 text-white rounded-full font-medium hover:bg-white/10 transition-colors backdrop-blur-md w-full sm:w-auto">
+              <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 px-8 py-4 bg-card border border-border text-foreground rounded-full font-medium hover:bg-white/10 transition-colors backdrop-blur-md w-full sm:w-auto">
                 <span>Hire Me</span>
               </MagneticButton>
             </Link>
@@ -97,7 +97,7 @@ export default function Home() {
           transition={{ delay: 4, duration: 1 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center space-y-2 opacity-60"
         >
-          <span className="text-xs uppercase tracking-widest text-gray-400">Scroll</span>
+          <span className="text-xs uppercase tracking-widest text-muted">Scroll</span>
           <div className="w-[1px] h-12 bg-gradient-to-b from-gray-400 to-transparent" />
         </motion.div>
       </section>
@@ -106,7 +106,7 @@ export default function Home() {
       <StatsSection />
 
       {/* Quick Nav Cards */}
-      <section className="py-20 bg-[#0F172A]">
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-6 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -115,10 +115,10 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               Explore My <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Work</span>
             </h2>
-            <p className="text-gray-400">Navigate to see everything I do</p>
+            <p className="text-muted">Navigate to see everything I do</p>
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -137,12 +137,12 @@ export default function Home() {
               >
                 <Link
                   href={card.href}
-                  className="group block glass-panel border border-white/10 bg-white/5 backdrop-blur-sm rounded-2xl p-6 hover:shadow-[0_0_25px_rgba(59,130,246,0.12)] hover:-translate-y-2 transition-all duration-300 cursor-hover"
+                  className="group block glass-panel border border-border bg-card backdrop-blur-sm rounded-2xl p-6 hover:shadow-[0_0_25px_rgba(59,130,246,0.12)] hover:-translate-y-2 transition-all duration-300 cursor-hover"
                 >
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${card.gradient} flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform`}>
                     {card.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors">{card.label}</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">{card.label}</h3>
                   <p className="text-gray-500 text-sm">{card.desc}</p>
                 </Link>
               </motion.div>

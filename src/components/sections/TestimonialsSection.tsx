@@ -67,7 +67,7 @@ export default function TestimonialsSection() {
     };
 
     return (
-        <section className="relative py-32 bg-[#0a101d] overflow-hidden">
+        <section className="relative py-32 bg-alt overflow-hidden">
             {/* Background Decor */}
             <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px] pointer-events-none" />
@@ -75,7 +75,7 @@ export default function TestimonialsSection() {
             <div className="container mx-auto px-6 max-w-7xl relative z-10 text-center flex flex-col items-center">
 
                 <span className="text-secondary text-sm font-semibold tracking-widest uppercase mb-4 block">Testimonials</span>
-                <h2 className="text-4xl md:text-5xl font-bold text-white mb-16">
+                <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-16">
                     Client <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">Stories</span>
                 </h2>
 
@@ -96,10 +96,10 @@ export default function TestimonialsSection() {
                             }}
                             className="absolute w-full px-4"
                         >
-                            <div className="glass-panel border border-white/10 bg-white/5 backdrop-blur-xl rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
+                            <div className="glass-panel border border-border bg-card backdrop-blur-xl rounded-[2rem] p-8 md:p-12 relative overflow-hidden group">
 
                                 {/* Quotation Mark Watermark */}
-                                <Quote className="absolute top-8 right-8 w-32 h-32 text-white/5 -rotate-12 pointer-events-none" />
+                                <Quote className="absolute top-8 right-8 w-32 h-32 text-foreground/5 -rotate-12 pointer-events-none" />
                                 {/* Star Rating */}
                                 <div className="flex space-x-1 mb-6 justify-center sm:justify-start">
                                     {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
@@ -119,7 +119,7 @@ export default function TestimonialsSection() {
                                         style={{ backgroundImage: `url(${testimonials[currentIndex].image})` }}
                                     />
                                     <div className="text-left">
-                                        <h4 className="text-lg font-bold text-white group-hover:text-primary transition-colors">{testimonials[currentIndex].name}</h4>
+                                        <h4 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">{testimonials[currentIndex].name}</h4>
                                         <p className="text-sm text-accent font-medium">{testimonials[currentIndex].role}</p>
                                     </div>
                                 </div>
@@ -132,13 +132,13 @@ export default function TestimonialsSection() {
                     <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 flex justify-between z-20 pointer-events-none px-4 md:-mx-12">
                         <button
                             onClick={prevTestimonial}
-                            className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full glass-panel border border-white/10 bg-white/5 hover:bg-primary/20 text-white transition-colors cursor-hover hover:scale-110 active:scale-95"
+                            className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full glass-panel border border-border bg-card hover:bg-primary/20 text-foreground transition-colors cursor-hover hover:scale-110 active:scale-95"
                         >
                             <ChevronLeft className="w-6 h-6" />
                         </button>
                         <button
                             onClick={nextTestimonial}
-                            className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full glass-panel border border-white/10 bg-white/5 hover:bg-primary/20 text-white transition-colors cursor-hover hover:scale-110 active:scale-95"
+                            className="pointer-events-auto w-12 h-12 flex items-center justify-center rounded-full glass-panel border border-border bg-card hover:bg-primary/20 text-foreground transition-colors cursor-hover hover:scale-110 active:scale-95"
                         >
                             <ChevronRight className="w-6 h-6" />
                         </button>

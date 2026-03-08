@@ -53,7 +53,7 @@ const portableTextComponents = {
     types: {
         image: ({ value }: any) => {
             return (
-                <div className="relative w-full h-[400px] my-10 rounded-2xl overflow-hidden border border-white/10">
+                <div className="relative w-full h-[400px] my-10 rounded-2xl overflow-hidden border border-border">
                     {/* Sanity images come with hotspot data, but we'll use a simple img tag for now */}
                     <img
                         src={value.asset.url || value.asset._ref}
@@ -65,10 +65,10 @@ const portableTextComponents = {
         },
     },
     block: {
-        h1: ({ children }: any) => <h1 className="text-4xl md:text-5xl font-bold mt-16 mb-6 text-white">{children}</h1>,
-        h2: ({ children }: any) => <h2 className="text-3xl font-bold mt-12 mb-4 text-white">{children}</h2>,
-        h3: ({ children }: any) => <h3 className="text-2xl font-bold mt-8 mb-4 text-white">{children}</h3>,
-        h4: ({ children }: any) => <h4 className="text-xl font-bold mt-6 mb-4 text-white">{children}</h4>,
+        h1: ({ children }: any) => <h1 className="text-4xl md:text-5xl font-bold mt-16 mb-6 text-foreground">{children}</h1>,
+        h2: ({ children }: any) => <h2 className="text-3xl font-bold mt-12 mb-4 text-foreground">{children}</h2>,
+        h3: ({ children }: any) => <h3 className="text-2xl font-bold mt-8 mb-4 text-foreground">{children}</h3>,
+        h4: ({ children }: any) => <h4 className="text-xl font-bold mt-6 mb-4 text-foreground">{children}</h4>,
         blockquote: ({ children }: any) => <blockquote className="border-l-4 border-primary pl-6 my-8 italic text-gray-300 text-xl">{children}</blockquote>,
         normal: ({ children }: any) => <p className="mb-6 leading-relaxed text-gray-300 text-lg">{children}</p>,
     },
@@ -77,8 +77,8 @@ const portableTextComponents = {
         number: ({ children }: any) => <ol className="list-decimal list-inside mb-6 space-y-2 text-gray-300 text-lg">{children}</ol>,
     },
     marks: {
-        strong: ({ children }: any) => <strong className="font-bold text-white">{children}</strong>,
-        em: ({ children }: any) => <em className="italic text-gray-400">{children}</em>,
+        strong: ({ children }: any) => <strong className="font-bold text-foreground">{children}</strong>,
+        em: ({ children }: any) => <em className="italic text-muted">{children}</em>,
         link: ({ children, value }: any) => {
             const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
             return (
@@ -134,7 +134,7 @@ export default async function BlogPostPage({ params }: Props) {
     };
 
     return (
-        <main className="flex flex-col min-h-screen pt-32 pb-24 bg-[#0F172A] relative overflow-hidden">
+        <main className="flex flex-col min-h-screen pt-32 pb-24 bg-background relative overflow-hidden">
             {/* SEO Schema */}
             <script
                 type="application/ld+json"
@@ -148,7 +148,7 @@ export default async function BlogPostPage({ params }: Props) {
                 {/* Back Button */}
                 <Link
                     href="/blog"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white mb-10 transition-colors group"
+                    className="inline-flex items-center gap-2 text-sm font-medium text-muted hover:text-foreground mb-10 transition-colors group"
                 >
                     <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                     Back to all posts
@@ -163,41 +163,41 @@ export default async function BlogPostPage({ params }: Props) {
                                 {post.category}
                             </span>
                         )}
-                        <span className="flex items-center gap-1.5 text-sm text-gray-400">
+                        <span className="flex items-center gap-1.5 text-sm text-muted">
                             <Clock className="w-4 h-4" />
                             {postDate}
                         </span>
-                        <span className="flex items-center gap-1.5 text-sm text-gray-400">
+                        <span className="flex items-center gap-1.5 text-sm text-muted">
                             <BookOpen className="w-4 h-4" />
                             {readingTime} min read
                         </span>
                     </div>
 
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight">
                         {post.title}
                     </h1>
 
                     {/* Author Meta */}
-                    <div className="flex items-center gap-4 border-t border-b border-white/10 py-6">
+                    <div className="flex items-center gap-4 border-t border-b border-border py-6">
                         {post.authorImage ? (
                             <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary/30">
                                 <img src={post.authorImage} alt={post.authorName} className="w-full h-full object-cover" />
                             </div>
                         ) : (
-                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold text-white">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-xl font-bold text-foreground">
                                 {post.authorName ? post.authorName[0] : 'M'}
                             </div>
                         )}
                         <div>
-                            <p className="text-white font-medium">{post.authorName || 'Md Mahid Raza'}</p>
-                            <p className="text-sm text-gray-400">Author & Web Designer</p>
+                            <p className="text-foreground font-medium">{post.authorName || 'Md Mahid Raza'}</p>
+                            <p className="text-sm text-muted">Author & Web Designer</p>
                         </div>
                     </div>
                 </header>
 
                 {/* Main Hero Image */}
                 {post.mainImage && (
-                    <div className="w-full h-[400px] md:h-[500px] relative rounded-3xl overflow-hidden mb-16 border border-white/10 shadow-2xl shadow-black/50">
+                    <div className="w-full h-[400px] md:h-[500px] relative rounded-3xl overflow-hidden mb-16 border border-border shadow-2xl shadow-black/50">
                         <img
                             src={post.mainImage}
                             alt={post.title}
@@ -216,8 +216,8 @@ export default async function BlogPostPage({ params }: Props) {
                 </div>
 
                 {/* Share Article Section */}
-                <div className="mt-16 pt-8 border-t border-white/10 flex flex-col items-center">
-                    <h4 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <div className="mt-16 pt-8 border-t border-border flex flex-col items-center">
+                    <h4 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
                         <Share2 className="w-5 h-5 text-primary" /> Share this Article
                     </h4>
                     <div className="flex flex-wrap justify-center gap-4">
@@ -225,7 +225,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href={`https://wa.me/?text=Check out this article: https://mrmahid.com/blog/${resolvedParams.slug}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-6 py-3 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-foreground rounded-full font-medium transition-all cursor-hover"
                         >
                             <MessageCircle className="w-5 h-5" /> WhatsApp
                         </a>
@@ -233,7 +233,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href={`https://www.facebook.com/sharer/sharer.php?u=https://mrmahid.com/blog/${resolvedParams.slug}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600/10 text-blue-500 hover:bg-blue-600 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600/10 text-blue-500 hover:bg-blue-600 hover:text-foreground rounded-full font-medium transition-all cursor-hover"
                         >
                             <Facebook className="w-5 h-5" /> Facebook
                         </a>
@@ -241,7 +241,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href={`fb-messenger://share/?link=https://mrmahid.com/blog/${resolvedParams.slug}`}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-500/10 text-blue-400 hover:bg-blue-500 hover:text-foreground rounded-full font-medium transition-all cursor-hover"
                         >
                             <MessageSquare className="w-5 h-5" /> Messenger
                         </a>
@@ -249,7 +249,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href={`https://www.instagram.com/mrmahid141?igsh=MTg5djc3ZWs2dmYwcw==`}
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-6 py-3 bg-pink-500/10 text-pink-500 hover:bg-pink-500 hover:text-white rounded-full font-medium transition-all cursor-hover"
+                            className="flex items-center justify-center gap-2 px-6 py-3 bg-pink-500/10 text-pink-500 hover:bg-pink-500 hover:text-foreground rounded-full font-medium transition-all cursor-hover"
                         >
                             <Instagram className="w-5 h-5" /> Instagram
                         </a>
@@ -258,11 +258,11 @@ export default async function BlogPostPage({ params }: Props) {
 
                 {/* Related Articles Section */}
                 {relatedPosts && relatedPosts.length > 0 && (
-                    <div className="mt-20 pt-16 border-t border-white/10">
-                        <h3 className="text-3xl font-bold text-white mb-10 text-center">Read Next</h3>
+                    <div className="mt-20 pt-16 border-t border-border">
+                        <h3 className="text-3xl font-bold text-foreground mb-10 text-center">Read Next</h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             {relatedPosts.map((rPost: any) => (
-                                <Link href={`/blog/${rPost.slug}`} key={rPost.slug} className="group flex flex-col bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:border-primary/50 transition-colors">
+                                <Link href={`/blog/${rPost.slug}`} key={rPost.slug} className="group flex flex-col bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/50 transition-colors">
                                     <div className="h-40 relative overflow-hidden">
                                         {rPost.mainImage ? (
                                             <img src={rPost.mainImage} alt={rPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -271,8 +271,8 @@ export default async function BlogPostPage({ params }: Props) {
                                         )}
                                     </div>
                                     <div className="p-5 flex-1 flex flex-col">
-                                        <h4 className="text-lg font-bold text-white mb-2 line-clamp-2 group-hover:text-primary transition-colors">{rPost.title}</h4>
-                                        <p className="text-sm text-gray-400 line-clamp-2 mb-4 flex-1">{rPost.excerpt}</p>
+                                        <h4 className="text-lg font-bold text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">{rPost.title}</h4>
+                                        <p className="text-sm text-muted line-clamp-2 mb-4 flex-1">{rPost.excerpt}</p>
                                         <span className="text-xs text-primary font-medium mt-auto">Read Article →</span>
                                     </div>
                                 </Link>
@@ -295,12 +295,12 @@ export default async function BlogPostPage({ params }: Props) {
                         <span className="ml-2 text-green-400 font-medium text-sm tracking-widest uppercase">Available for new projects</span>
                     </div>
 
-                    <h3 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                    <h3 className="text-3xl md:text-5xl font-extrabold text-foreground mb-6 leading-tight">
                         Ready to <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Dominate</span> Your Market Online? 🚀
                     </h3>
 
                     <p className="text-gray-300 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-                        Your business deserves more than just a basic template. Agar aap apne brand ke liye ek <strong className="text-white">high-performing, premium website</strong> banwana chahte hain jo visitors ko customers mein badle, toh der mat kijiye! Let's discuss your vision today.
+                        Your business deserves more than just a basic template. Agar aap apne brand ke liye ek <strong className="text-foreground">high-performing, premium website</strong> banwana chahte hain jo visitors ko customers mein badle, toh der mat kijiye! Let's discuss your vision today.
                     </p>
 
                     <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-4">
@@ -309,7 +309,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href="https://wa.me/917865055431"
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,197,94,0.3)]"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-foreground rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,197,94,0.3)]"
                         >
                             <MessageCircle className="w-5 h-5 animate-pulse" /> Message on WhatsApp
                         </a>
@@ -319,7 +319,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href="https://www.instagram.com/mrmahid141?igsh=MTg5djc3ZWs2dmYwcw=="
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)]"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 text-foreground rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)]"
                         >
                             <Instagram className="w-5 h-5" /> Follow on Instagram
                         </a>
@@ -329,7 +329,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href="https://youtube.com/@mrmahid9783?si=r8r7FMEK5W4v171R"
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(220,38,38,0.3)]"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-foreground rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(220,38,38,0.3)]"
                         >
                             <Youtube className="w-5 h-5" /> Subscribe YouTube
                         </a>

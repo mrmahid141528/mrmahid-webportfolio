@@ -76,7 +76,7 @@ export default function ProfileSection() {
     ];
 
     return (
-        <section id="about" className="relative py-32 bg-[#0F172A] z-10 overflow-hidden" ref={containerRef}>
+        <section id="about" className="relative py-32 bg-background z-10 overflow-hidden" ref={containerRef}>
             {/* Background Soft Glow */}
             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
             <div className="absolute top-1/2 right-1/4 -translate-y-1/2 translate-x-1/2 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px] pointer-events-none" />
@@ -96,13 +96,13 @@ export default function ProfileSection() {
                         >
                             {/* Animated Gradient Border Layer */}
                             <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-tr from-primary via-accent to-secondary animate-spin-slow opacity-70 blur-sm pointer-events-none" style={{ animationDuration: '8s' }} />
-                            <div className="absolute inset-[2px] rounded-[2rem] bg-[#0F172A] z-0" />
+                            <div className="absolute inset-[2px] rounded-[2rem] bg-background z-0" />
 
                             {/* Floating Animation Wrapper */}
                             <motion.div
                                 animate={{ y: [-10, 10, -10] }}
                                 transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                                className="absolute inset-[4px] rounded-[2rem] overflow-hidden z-10 glass-panel border border-white/10 bg-white/5 backdrop-blur-xl flex items-center justify-center group cursor-hover"
+                                className="absolute inset-[4px] rounded-[2rem] overflow-hidden z-10 glass-panel border border-border bg-card backdrop-blur-xl flex items-center justify-center group cursor-hover"
                             >
                                 {/* Profile Image */}
                                 <div className="relative w-full h-full group-hover:scale-105 transition-transform duration-700">
@@ -127,7 +127,7 @@ export default function ProfileSection() {
                             <p className="text-xl text-primary font-medium tracking-wide">Web Designer & Digital Creator</p>
                         </div>
 
-                        <p className="text-gray-400 leading-relaxed text-lg max-w-xl">
+                        <p className="text-muted leading-relaxed text-lg max-w-xl">
                             I specialize in crafting premium, high-performance digital experiences that elevate local businesses.
                             By blending stunning aesthetics with cutting-edge tech like Framer Motion and GSAP, I ensure your
                             brand leaves a lasting impact from the very first scroll.
@@ -159,7 +159,7 @@ export default function ProfileSection() {
                         {/* CTA */}
                         <div className="pt-4 flex w-fit">
                             <a href="/Md_Mahid_Raza_CV.png" download="Md_Mahid_Raza_CV.png" className="w-full">
-                                <MagneticButton className="cursor-hover group flex items-center space-x-2 px-8 py-4 bg-white/10 border border-white/20 text-white rounded-full font-medium hover:bg-white/20 hover:border-white/40 transition-all backdrop-blur-md w-fit">
+                                <MagneticButton className="cursor-hover group flex items-center space-x-2 px-8 py-4 bg-white/10 border border-white/20 text-foreground rounded-full font-medium hover:bg-white/20 hover:border-white/40 transition-all backdrop-blur-md w-fit">
                                     <Download className="w-5 h-5 group-hover:-translate-y-1 transition-transform" />
                                     <span>Download CV</span>
                                 </MagneticButton>

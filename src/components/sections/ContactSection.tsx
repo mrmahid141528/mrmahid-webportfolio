@@ -65,7 +65,7 @@ export default function ContactSection() {
 
 
     return (
-        <section id="contact" className="relative py-32 bg-[#0F172A] z-10 overflow-hidden">
+        <section id="contact" className="relative py-32 bg-background z-10 overflow-hidden">
             {/* Background Decor */}
             <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
@@ -76,41 +76,41 @@ export default function ContactSection() {
                     {/* Contact Info (Left) */}
                     <div className="lg:col-span-2 flex flex-col justify-center">
                         <span className="text-primary text-sm font-semibold tracking-widest uppercase mb-4 block">Get In Touch</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
                             Let's Build Your <br /><span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">Digital Future</span>
                         </h2>
-                        <p className="text-gray-400 mb-12 text-lg">
+                        <p className="text-muted mb-12 text-lg">
                             Ready to elevate your business? Fill out the form or reach out directly. I usually respond within 24 hours.
                         </p>
 
                         <div className="space-y-8">
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 rounded-full glass-panel border border-white/10 bg-white/5 flex items-center justify-center text-primary shrink-0">
+                                <div className="w-12 h-12 rounded-full glass-panel border border-border bg-card flex items-center justify-center text-primary shrink-0">
                                     <Mail className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-medium mb-1">Email</h4>
-                                    <a href="mailto:mrmahid141528@gmail.com" className="text-gray-400 hover:text-primary transition-colors cursor-hover">mrmahid141528@gmail.com</a>
+                                    <h4 className="text-foreground font-medium mb-1">Email</h4>
+                                    <a href="mailto:mrmahid141528@gmail.com" className="text-muted hover:text-primary transition-colors cursor-hover">mrmahid141528@gmail.com</a>
                                 </div>
                             </div>
 
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 rounded-full glass-panel border border-white/10 bg-white/5 flex items-center justify-center text-accent shrink-0">
+                                <div className="w-12 h-12 rounded-full glass-panel border border-border bg-card flex items-center justify-center text-accent shrink-0">
                                     <MessageSquare className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-medium mb-1">WhatsApp</h4>
-                                    <a href="https://wa.me/917865055431" target="_blank" className="text-gray-400 hover:text-accent transition-colors cursor-hover">+91 78650 55431</a>
+                                    <h4 className="text-foreground font-medium mb-1">WhatsApp</h4>
+                                    <a href="https://wa.me/917865055431" target="_blank" className="text-muted hover:text-accent transition-colors cursor-hover">+91 78650 55431</a>
                                 </div>
                             </div>
 
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 rounded-full glass-panel border border-white/10 bg-white/5 flex items-center justify-center text-secondary shrink-0">
+                                <div className="w-12 h-12 rounded-full glass-panel border border-border bg-card flex items-center justify-center text-secondary shrink-0">
                                     <MapPin className="w-5 h-5" />
                                 </div>
                                 <div>
-                                    <h4 className="text-white font-medium mb-1">Location</h4>
-                                    <p className="text-gray-400">West Bengal, India</p>
+                                    <h4 className="text-foreground font-medium mb-1">Location</h4>
+                                    <p className="text-muted">West Bengal, India</p>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,7 @@ export default function ContactSection() {
 
                     {/* Contact Form (Right) */}
                     <div className="lg:col-span-3">
-                        <div className="glass-panel border border-white/10 bg-white/5 backdrop-blur-xl rounded-[2rem] p-8 md:p-10 relative">
+                        <div className="glass-panel border border-border bg-card backdrop-blur-xl rounded-[2rem] p-8 md:p-10 relative">
 
                             <AnimatePresence>
                                 {isSuccess && (
@@ -126,7 +126,7 @@ export default function ContactSection() {
                                         initial={{ opacity: 0, scale: 0.9 }}
                                         animate={{ opacity: 1, scale: 1 }}
                                         exit={{ opacity: 0, scale: 0.9 }}
-                                        className="absolute inset-0 z-20 bg-[#0F172A]/90 backdrop-blur-md rounded-[2rem] flex flex-col items-center justify-center text-center p-8 border border-accent/20"
+                                        className="absolute inset-0 z-20 bg-background/90 backdrop-blur-md rounded-[2rem] flex flex-col items-center justify-center text-center p-8 border border-accent/20"
                                     >
                                         <motion.div
                                             initial={{ scale: 0 }}
@@ -136,8 +136,8 @@ export default function ContactSection() {
                                         >
                                             <CheckCircle2 size={40} />
                                         </motion.div>
-                                        <h3 className="text-3xl font-bold text-white mb-2">Request Ready!</h3>
-                                        <p className="text-gray-400 max-w-sm">
+                                        <h3 className="text-3xl font-bold text-foreground mb-2">Request Ready!</h3>
+                                        <p className="text-muted max-w-sm">
                                             Opening your email client and WhatsApp...
                                         </p>
                                     </motion.div>
@@ -148,26 +148,26 @@ export default function ContactSection() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Name */}
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400 font-medium ml-2">Name *</label>
+                                        <label className="text-sm text-muted font-medium ml-2">Name *</label>
                                         <input
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
                                             placeholder="John Doe"
-                                            className={`w-full bg-white/5 border ${errors.name ? 'border-red-500' : 'border-white/10'} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors cursor-hover`}
+                                            className={`w-full bg-card border ${errors.name ? 'border-red-500' : 'border-border'} rounded-xl px-5 py-4 text-foreground placeholder:text-gray-600 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors cursor-hover`}
                                         />
                                         {errors.name && <p className="text-red-500 text-xs ml-2">{errors.name}</p>}
                                     </div>
 
                                     {/* Business Type */}
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400 font-medium ml-2">Business Type *</label>
+                                        <label className="text-sm text-muted font-medium ml-2">Business Type *</label>
                                         <input
                                             name="businessType"
                                             value={formData.businessType}
                                             onChange={handleChange}
                                             placeholder="e.g. Healthcare, Retail"
-                                            className={`w-full bg-white/5 border ${errors.businessType ? 'border-red-500' : 'border-white/10'} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors cursor-hover`}
+                                            className={`w-full bg-card border ${errors.businessType ? 'border-red-500' : 'border-border'} rounded-xl px-5 py-4 text-foreground placeholder:text-gray-600 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors cursor-hover`}
                                         />
                                         {errors.businessType && <p className="text-red-500 text-xs ml-2">{errors.businessType}</p>}
                                     </div>
@@ -176,12 +176,12 @@ export default function ContactSection() {
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Project Type */}
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400 font-medium ml-2">Project Type *</label>
+                                        <label className="text-sm text-muted font-medium ml-2">Project Type *</label>
                                         <select
                                             name="projectType"
                                             value={formData.projectType}
                                             onChange={handleChange}
-                                            className={`w-full bg-[#151e32] border ${errors.projectType ? 'border-red-500' : 'border-white/10'} rounded-xl px-5 py-4 text-white focus:outline-none focus:border-primary transition-colors cursor-hover appearance-none`}
+                                            className={`w-full bg-card border ${errors.projectType ? 'border-red-500' : 'border-border'} rounded-xl px-5 py-4 text-foreground focus:outline-none focus:border-primary transition-colors cursor-hover appearance-none`}
                                         >
                                             <option value="" disabled>Select a type</option>
                                             <option value="website">Website Design & Dev</option>
@@ -194,12 +194,12 @@ export default function ContactSection() {
 
                                     {/* Budget */}
                                     <div className="space-y-2">
-                                        <label className="text-sm text-gray-400 font-medium ml-2">Estimated Budget</label>
+                                        <label className="text-sm text-muted font-medium ml-2">Estimated Budget</label>
                                         <select
                                             name="budget"
                                             value={formData.budget}
                                             onChange={handleChange}
-                                            className="w-full bg-[#151e32] border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-primary transition-colors cursor-hover appearance-none"
+                                            className="w-full bg-card border border-border rounded-xl px-5 py-4 text-foreground focus:outline-none focus:border-primary transition-colors cursor-hover appearance-none"
                                         >
                                             <option value="" disabled>Select range</option>
                                             <option value="small">Less than ₹15,000</option>
@@ -211,20 +211,20 @@ export default function ContactSection() {
 
                                 {/* Message */}
                                 <div className="space-y-2">
-                                    <label className="text-sm text-gray-400 font-medium ml-2">Project Details *</label>
+                                    <label className="text-sm text-muted font-medium ml-2">Project Details *</label>
                                     <textarea
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
                                         placeholder="Tell me about your goals..."
                                         rows={4}
-                                        className={`w-full bg-white/5 border ${errors.message ? 'border-red-500' : 'border-white/10'} rounded-xl px-5 py-4 text-white placeholder:text-gray-600 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors cursor-hover resize-none`}
+                                        className={`w-full bg-card border ${errors.message ? 'border-red-500' : 'border-border'} rounded-xl px-5 py-4 text-foreground placeholder:text-gray-600 focus:outline-none focus:border-primary focus:bg-white/10 transition-colors cursor-hover resize-none`}
                                     />
                                     {errors.message && <p className="text-red-500 text-xs ml-2">{errors.message}</p>}
                                 </div>
 
                                 <div className="pt-2">
-                                    <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 w-full py-4 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-primary/50 relative overflow-hidden">
+                                    <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 w-full py-4 bg-primary text-foreground rounded-xl font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-primary/50 relative overflow-hidden">
                                         {/* Button progress bg */}
                                         {isSubmitting && (
                                             <motion.div
