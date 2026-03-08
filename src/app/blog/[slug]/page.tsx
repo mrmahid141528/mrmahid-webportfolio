@@ -42,6 +42,24 @@ export async function generateMetadata(
         openGraph: {
             title: post.title,
             description: post.excerpt,
+            url: `https://www.mrmahid.com/blog/${resolvedParams.slug}`,
+            siteName: 'Md Mahid Raza Portfolio',
+            images: post.mainImage ? [
+                {
+                    url: post.mainImage,
+                    width: 1200,
+                    height: 630,
+                    alt: post.title,
+                }
+            ] : [],
+            type: 'article',
+            publishedTime: post.publishedAt,
+            authors: [post.authorName || 'Md Mahid Raza'],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: post.title,
+            description: post.excerpt,
             images: post.mainImage ? [post.mainImage] : [],
         },
     }
@@ -309,7 +327,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href="https://wa.me/917865055431"
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-foreground rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,197,94,0.3)]"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,197,94,0.3)]"
                         >
                             <MessageCircle className="w-5 h-5 animate-pulse" /> Message on WhatsApp
                         </a>
@@ -319,7 +337,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href="https://www.instagram.com/mrmahid141?igsh=MTg5djc3ZWs2dmYwcw=="
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 text-foreground rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)]"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:from-purple-600 hover:to-orange-600 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(236,72,153,0.3)]"
                         >
                             <Instagram className="w-5 h-5" /> Follow on Instagram
                         </a>
@@ -329,7 +347,7 @@ export default async function BlogPostPage({ params }: Props) {
                             href="https://youtube.com/@mrmahid9783?si=r8r7FMEK5W4v171R"
                             target="_blank"
                             rel="noreferrer"
-                            className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-foreground rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(220,38,38,0.3)]"
+                            className="flex items-center justify-center gap-2 px-8 py-4 bg-red-600 hover:bg-red-700 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(220,38,38,0.3)]"
                         >
                             <Youtube className="w-5 h-5" /> Subscribe YouTube
                         </a>
