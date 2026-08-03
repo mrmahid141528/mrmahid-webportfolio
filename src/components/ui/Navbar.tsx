@@ -23,6 +23,7 @@ export default function Navbar() {
         { label: 'Home', href: '/' },
         { label: 'About', href: '/about' },
         { label: 'Projects', href: '/projects' },
+        { label: 'Services', href: '/services' },
         { label: 'Blog', href: '/blog' },
     ];
 
@@ -59,8 +60,8 @@ export default function Navbar() {
                             key={item.label}
                             href={item.href}
                             className={`text-sm font-medium transition-colors cursor-hover relative group ${isActive(item.href)
-                                    ? 'text-foreground'
-                                    : 'text-muted hover:text-foreground'
+                                ? 'text-foreground'
+                                : 'text-muted hover:text-foreground'
                                 }`}
                         >
                             {item.label}
@@ -75,8 +76,8 @@ export default function Navbar() {
                     <Link
                         href="/contact"
                         className={`px-5 py-2.5 rounded-full border font-medium transition-all cursor-hover backdrop-blur-sm ${isActive('/contact')
-                                ? 'bg-primary border-primary text-foreground'
-                                : 'bg-card border-border hover:border-primary/50 text-foreground hover:bg-primary/10'
+                            ? 'bg-primary border-primary text-foreground'
+                            : 'bg-card border-border hover:border-primary/50 text-foreground hover:bg-primary/10'
                             }`}
                     >
                         <span className="relative z-10">Hire Me</span>
