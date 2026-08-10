@@ -11,6 +11,15 @@ gsap.registerPlugin(ScrollTrigger);
 const projectsData = [
     {
         id: 1,
+        title: 'Homio Shifa Khana',
+        category: 'Website',
+        description: 'A modern, responsive website for Homio Shifa Khana clinic featuring an appointment booking system, doctor profiles, treatments information, and direct WhatsApp communication. Built to provide a fast, SEO-friendly experience.',
+        tools: ['Next.js', 'Tailwind CSS', 'TypeScript'],
+        image: '/homioshifakhana-preview.png',
+        link: 'https://homioshifakhana-clinic-2cpb.vercel.app/',
+    },
+    {
+        id: 2,
         title: 'Star Gym',
         category: 'Website',
         description: 'A fully responsive and SEO-optimized official website built for Star Gym — a premium fitness center. The website features a stunning hero section, services overview, pricing plans, trainer profiles, a gallery, and a contact form. Designed to attract new members and generate leads through a bold, energetic visual identity that reflects the brand\'s commitment to strength and performance.',
