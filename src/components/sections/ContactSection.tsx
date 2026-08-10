@@ -183,11 +183,21 @@ export default function ContactSection() {
                                             onChange={handleChange}
                                             className={`w-full bg-card border ${errors.projectType ? 'border-red-500' : 'border-border'} rounded-xl px-5 py-4 text-foreground focus:outline-none focus:border-primary transition-colors cursor-hover appearance-none`}
                                         >
-                                            <option value="" disabled>Select a type</option>
-                                            <option value="website">Website Design & Dev</option>
-                                            <option value="ecommerce">E-Commerce Platform</option>
-                                            <option value="branding">Brand Identity</option>
-                                            <option value="uiux">UI/UX Design</option>
+                                            <option value="" disabled className="bg-[#1a1a1a] text-white">Select a type</option>
+                                            <option value="ecommerce" className="bg-[#1a1a1a] text-white">E-commerce Store</option>
+                                            <option value="portfolio" className="bg-[#1a1a1a] text-white">Portfolio / Resume Website</option>
+                                            <option value="business" className="bg-[#1a1a1a] text-white">Business / Corporate Website</option>
+                                            <option value="clinic" className="bg-[#1a1a1a] text-white">Clinic / Healthcare Website</option>
+                                            <option value="educational" className="bg-[#1a1a1a] text-white">Educational / School Management Portal</option>
+                                            <option value="restaurant" className="bg-[#1a1a1a] text-white">Restaurant / Cafe Website</option>
+                                            <option value="realestate" className="bg-[#1a1a1a] text-white">Real Estate / Property Listing</option>
+                                            <option value="blog" className="bg-[#1a1a1a] text-white">Blog / News / Magazine</option>
+                                            <option value="landingpage" className="bg-[#1a1a1a] text-white">Landing Page / Lead Generation</option>
+                                            <option value="microsaas" className="bg-[#1a1a1a] text-white">Micro-SaaS / Web Utility Tools</option>
+                                            <option value="booking" className="bg-[#1a1a1a] text-white">Booking / Appointment System</option>
+                                            <option value="affiliate" className="bg-[#1a1a1a] text-white">Affiliate / Product Discovery Website</option>
+                                            <option value="socialnetwork" className="bg-[#1a1a1a] text-white">Social Network / Community Forum</option>
+                                            <option value="event" className="bg-[#1a1a1a] text-white">Event Management Website</option>
                                         </select>
                                         {errors.projectType && <p className="text-red-500 text-xs ml-2">{errors.projectType}</p>}
                                     </div>
@@ -201,10 +211,12 @@ export default function ContactSection() {
                                             onChange={handleChange}
                                             className="w-full bg-card border border-border rounded-xl px-5 py-4 text-foreground focus:outline-none focus:border-primary transition-colors cursor-hover appearance-none"
                                         >
-                                            <option value="" disabled>Select range</option>
-                                            <option value="small">Less than ₹15,000</option>
-                                            <option value="medium">₹15,000 - ₹50,000</option>
-                                            <option value="large">Over ₹50,000</option>
+                                            <option value="" disabled className="bg-[#1a1a1a] text-white">Select range</option>
+                                            <option value="budget_5-10" className="bg-[#1a1a1a] text-white">₹5,000 – ₹10,000</option>
+                                            <option value="budget_10-20" className="bg-[#1a1a1a] text-white">₹10,000 – ₹20,000</option>
+                                            <option value="budget_20-35" className="bg-[#1a1a1a] text-white">₹20,000 – ₹35,000</option>
+                                            <option value="budget_35-60" className="bg-[#1a1a1a] text-white">₹35,000 – ₹60,000</option>
+                                            <option value="budget_60-1lakh" className="bg-[#1a1a1a] text-white">₹60,000 – ₹1,00,000</option>
                                         </select>
                                     </div>
                                 </div>
