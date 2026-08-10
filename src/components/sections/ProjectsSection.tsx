@@ -15,7 +15,7 @@ const projectsData = [
         category: 'Website',
         description: 'A modern, responsive website for Homio Shifa Khana clinic featuring an appointment booking system, doctor profiles, treatments information, and direct WhatsApp communication. Built to provide a fast, SEO-friendly experience.',
         tools: ['Next.js', 'Tailwind CSS', 'TypeScript'],
-        image: '/homioshifakhana-preview.png',
+        image: '/homioshifakhana-preview.png.jfif',
         link: 'https://homioshifakhana-clinic-2cpb.vercel.app/',
     },
     {
