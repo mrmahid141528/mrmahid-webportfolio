@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   applicationName: "mrmahid Portfolio",
   authors: [{ name: "Md Mahid Raza" }],
   creator: "Md Mahid Raza",
+  icons: {
+    icon: "/icon.png",
+  },
   alternates: {
     canonical: "https://www.mrmahid.com",
   },
