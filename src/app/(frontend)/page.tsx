@@ -3,6 +3,7 @@ import HeroContent from '@/components/sections/HeroContent';
 import QuickNavCards from '@/components/sections/QuickNavCards';
 import ScrollIndicator from '@/components/sections/ScrollIndicator';
 import HeroSceneWrapper from '@/components/3d/HeroSceneWrapper';
+import FaqSection from '@/components/sections/FaqSection';
 
 export default function Home() {
   return (
@@ -26,6 +27,9 @@ export default function Home() {
       <section className="py-20 bg-background">
         <QuickNavCards />
       </section>
+
+      {/* FAQ Section */}
+      <FaqSection />
     </div>
   );
 }
