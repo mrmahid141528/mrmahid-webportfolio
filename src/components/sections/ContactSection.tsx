@@ -13,7 +13,7 @@ export default function ContactSection() {
         projectType: '',
         message: ''
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submittingType, setSubmittingType] = useState<'whatsapp' | 'email' | null>(null);
     const [isSuccess, setIsSuccess] = useState(false);
     const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -27,33 +27,25 @@ export default function ContactSection() {
         return Object.keys(tempErrors).length === 0;
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleAction = async (type: 'whatsapp' | 'email') => {
         if (!validate()) return;
-
-        setIsSubmitting(true);
+        setSubmittingType(type);
 
         try {
-            // 1. Construct Email Body (mailto)
-            const subject = encodeURIComponent(`New Project Inquiry from ${formData.name}`);
-            const body = encodeURIComponent(`Name: ${formData.name}\nBusiness: ${formData.businessType}\nProject: ${formData.projectType}\nBudget: ${formData.budget || 'Not specified'}\n\nMessage:\n${formData.message}`);
-            const mailtoLink = `mailto:mrmahid141528@gmail.com?subject=${subject}&body=${body}`;
-
-            // Open email client
-            window.location.href = mailtoLink;
-
-            // 2. Open WhatsApp after a short delay so the mail client has time to open
-            setTimeout(() => {
-                const whatsappText = encodeURIComponent(`*New Project Inquiry*\n\n*Name:* ${formData.name}\n*Business:* ${formData.businessType}\n*Project:* ${formData.projectType}\n*Budget:* ${formData.budget || 'Not specified'}\n*Message:* ${formData.message}`);
+            if (type === 'email') {
+                const subject = encodeURIComponent(`New Project Inquiry from ${formData.name}`);
+                const body = encodeURIComponent(`Name: ${formData.name}\nBusiness: ${formData.businessType}\nProject: ${formData.projectType}\nBudget: ${formData.budget || 'Not specified'}\n\nMessage:\n${formData.message}`);
+                window.location.href = `mailto:mrmahid141528@gmail.com?subject=${subject}&body=${body}`;
+            } else if (type === 'whatsapp') {
+                const whatsappText = encodeURIComponent(`*🚀 Web Design Request!*\n\n*👤 Name:* ${formData.name}\n*🏢 Business:* ${formData.businessType}\n*🛠 Project:* ${formData.projectType}\n*💰 Budget:* ${formData.budget || 'Not specified'}\n\n*💬 Message:* ${formData.message}\n\n_Sent from mrmahid.com_`);
                 window.open(`https://wa.me/918372932895?text=${whatsappText}`, '_blank');
-            }, 1000);
+            }
 
             setIsSuccess(true);
             setFormData({ name: '', businessType: '', budget: '', projectType: '', message: '' });
             setTimeout(() => setIsSuccess(false), 5000);
-
         } finally {
-            setIsSubmitting(false);
+            setSubmittingType(null);
         }
     };
 
@@ -144,7 +136,7 @@ export default function ContactSection() {
                                 )}
                             </AnimatePresence>
 
-                            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                            <form onSubmit={(e) => e.preventDefault()} className="space-y-6 relative z-10">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     {/* Name */}
                                     <div className="space-y-2">
@@ -235,22 +227,30 @@ export default function ContactSection() {
                                     {errors.message && <p className="text-red-500 text-xs ml-2">{errors.message}</p>}
                                 </div>
 
-                                <div className="pt-2">
-                                    <MagneticButton className="cursor-hover group flex items-center justify-center space-x-2 w-full py-4 bg-primary text-foreground rounded-xl font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-primary/50 relative overflow-hidden">
-                                        {/* Button progress bg */}
-                                        {isSubmitting && (
-                                            <motion.div
-                                                initial={{ width: 0 }}
-                                                animate={{ width: "100%" }}
-                                                transition={{ duration: 2 }}
-                                                className="absolute inset-0 bg-white/20 z-0"
-                                            />
-                                        )}
+                                <div className="pt-2 flex flex-col sm:flex-row gap-4">
+                                    <button
+                                        type="button"
+                                        onClick={() => handleAction('whatsapp')}
+                                        disabled={submittingType !== null}
+                                        className="cursor-hover group flex-1 flex items-center justify-center space-x-2 py-4 bg-green-500 text-white rounded-xl font-medium hover:bg-green-600 transition-all shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] relative overflow-hidden"
+                                    >
                                         <div className="relative z-10 flex items-center space-x-2">
-                                            <span>{isSubmitting ? 'Sending...' : 'Send Request'}</span>
-                                            {!isSubmitting && <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                                            <span>{submittingType === 'whatsapp' ? 'Opening...' : 'Send via WhatsApp'}</span>
+                                            {submittingType !== 'whatsapp' && <MessageSquare className="w-5 h-5 group-hover:scale-110 transition-transform" />}
                                         </div>
-                                    </MagneticButton>
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        onClick={() => handleAction('email')}
+                                        disabled={submittingType !== null}
+                                        className="cursor-hover group flex-1 flex items-center justify-center space-x-2 py-4 bg-primary text-foreground rounded-xl font-medium hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] border border-primary/50 relative overflow-hidden"
+                                    >
+                                        <div className="relative z-10 flex items-center space-x-2">
+                                            <span>{submittingType === 'email' ? 'Opening...' : 'Send via Email'}</span>
+                                            {submittingType !== 'email' && <Mail className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
+                                        </div>
+                                    </button>
                                 </div>
 
                             </form>
