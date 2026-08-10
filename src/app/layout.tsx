@@ -38,18 +38,18 @@ export const metadata: Metadata = {
     description: "I build premium, high-converting digital experiences. Expert in Next.js, React, and modern UI/UX design.",
     siteName: "Mr Mahid Web Design Portfolio",
     images: [{
-      url: "/star-gym-preview.png", // Must be fully qualified for OG or relative to metadataBase
+      url: "/portfolio-thumbnail.jpg.png", // Must be fully qualified for OG or relative to metadataBase
       width: 1200,
       height: 630,
-      alt: "Md Mahid Raza - Web Designer Portfolio",
+      alt: "Mr Mahid - Web Designer Portfolio",
     }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Md Mahid Raza | Premium Web Designer",
+    title: "Mr Mahid | Premium Web Designer",
     description: "Premium Web Design & Development services using modern Next.js stack.",
     creator: "@mrmahid", // Optional: Update if you have a handle
-    images: ["https://www.mrmahid.com/star-gym-preview.png"],
+    images: ["https://www.mrmahid.com/portfolio-thumbnail.jpg.png"],
   },
   robots: {
     index: true,
