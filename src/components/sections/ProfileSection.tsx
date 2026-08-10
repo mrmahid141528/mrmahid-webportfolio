@@ -108,7 +108,7 @@ export default function ProfileSection() {
                                 <div className="relative w-full h-full group-hover:scale-105 transition-transform duration-700">
                                     <Image
                                         src="/profile.jpg"
-                                        alt="Md Mahid Raza"
+                                        alt="Mr Mahid - Freelance Web Designer in India"
                                         fill
                                         className="object-cover"
                                         priority

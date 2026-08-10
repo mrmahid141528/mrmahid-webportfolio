@@ -14,7 +14,7 @@ export default function Footer() {
                     <div className="flex items-center justify-center">
                         <Image
                             src="/logo.png"
-                            alt="mrmahid logo"
+                            alt="Mr Mahid Website Design Logo"
                             width={320}
                             height={100}
                             className="w-auto h-16 md:h-20 object-contain opacity-90 hover:opacity-100 transition-opacity"

@@ -40,12 +40,14 @@ export default function HeroContent() {
                 className="mb-8 inline-flex items-center space-x-2 px-4 py-2 rounded-full border border-border bg-card backdrop-blur-md"
             >
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-sm text-gray-300 tracking-wide uppercase">MD MAHID Raza</span>
+                <span className="text-sm text-gray-300 tracking-wide uppercase">Mr Mahid | Freelance Web Designer India</span>
             </motion.div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-tight max-w-5xl">
-                <span className="block text-foreground opacity-90"><TypewriterText text="I Build" /></span>
-                <span className="block bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent pb-2">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-tight max-w-5xl relative">
+                {/* SEO-only Text Block visually hidden */}
+                <span className="sr-only">SEO-optimized Next.js Development and Professional Website Design by Mr Mahid in India</span>
+                <span className="block text-foreground opacity-90" aria-hidden="true"><TypewriterText text="I Build" /></span>
+                <span className="block bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent pb-2" aria-hidden="true">
                     <TypewriterText text="Digital Experiences" delay={1} />
                 </span>
             </h1>

@@ -16,11 +16,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.mrmahid.com"),
   title: {
-    default: "Md Mahid Raza (mrmahid) | Premium Web Designer & Next.js Developer",
-    template: "%s | Md Mahid Raza (mrmahid)",
+    default: "Mr Mahid | Freelance Web Designer & Next.js Developer India",
+    template: "%s | Mr Mahid",
   },
   description: "I build premium, high-converting digital experiences. Expert in Next.js, React, and modern UI/UX design. Based in West Bengal, India. Elevate your local business online today.",
-  keywords: ["mrmahid", "mr mahid", "md mahid raza", "mahid raza", "graphixel", "web designer india", "Next.js Developer", "freelance web designer west bengal", "ui/ux designer"],
+  keywords: ["Mr Mahid", "Website Design", "Freelance Web Designer India", "Next.js Development Services", "React.js Developer", "UI/UX Design Services", "md mahid raza", "mahid raza", "graphixel", "web designer india"],
   applicationName: "mrmahid Portfolio",
   authors: [{ name: "Md Mahid Raza" }],
   creator: "Md Mahid Raza",
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://www.mrmahid.com",
-    title: "Md Mahid Raza (mrmahid) | Premium Web Designer",
+    title: "Mr Mahid | Freelance Web Designer & Next.js Developer India",
     description: "I build premium, high-converting digital experiences. Expert in Next.js, React, and modern UI/UX design.",
-    siteName: "Md Mahid Raza Portfolio",
+    siteName: "Mr Mahid Web Design Portfolio",
     images: [{
       url: "/star-gym-preview.png", // Must be fully qualified for OG or relative to metadataBase
       width: 1200,
@@ -107,6 +107,7 @@ export default function RootLayout({
                   "@type": "Person",
                   "@id": "https://www.mrmahid.com/#person",
                   "name": "Md Mahid Raza",
+                  "alternateName": "Mr Mahid",
                   "url": "https://www.mrmahid.com",
                   "image": "https://www.mrmahid.com/logo.png",
                   "jobTitle": "Full-Stack Web Developer & UI/UX Designer",

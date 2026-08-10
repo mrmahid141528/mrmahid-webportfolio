@@ -45,7 +45,7 @@ export default function Navbar() {
                 >
                     <Image
                         src="/logo.png"
-                        alt="mrmahid logo"
+                        alt="Mr Mahid Website Design Logo"
                         width={280}
                         height={80}
                         className="w-auto h-12 md:h-16 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)]"
