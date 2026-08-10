@@ -329,7 +329,7 @@ export default async function BlogPostPage({ params }: Props) {
                     <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 mb-4">
                         {/* WhatsApp CTA */}
                         <a
-                            href="https://wa.me/917865055431"
+                            href="https://wa.me/918372932895"
                             target="_blank"
                             rel="noreferrer"
                             className="flex items-center justify-center gap-2 px-8 py-4 bg-green-500 hover:bg-green-600 text-white rounded-full font-bold transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(34,197,94,0.3)]"

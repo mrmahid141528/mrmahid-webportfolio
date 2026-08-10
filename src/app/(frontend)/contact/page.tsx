@@ -25,7 +25,7 @@ export default function ContactPage() {
             '@type': 'Person',
             name: 'Md Mahid Raza',
             email: 'mrmahid141528@gmail.com',
-            telephone: '+917865055431'
+            telephone: '+918372932895'
         }
     };
 

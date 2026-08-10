@@ -150,7 +150,7 @@ export default function RootLayout({
                   "@id": "https://www.mrmahid.com/#localbusiness",
                   "name": "Md Mahid Raza Web Development Services",
                   "image": "https://www.mrmahid.com/star-gym-preview.png",
-                  "telephone": "+917865055431",
+                  "telephone": "+918372932895",
                   "email": "mrmahid141@gmail.com",
                   "address": {
                     "@type": "PostalAddress",

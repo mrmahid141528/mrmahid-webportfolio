@@ -45,7 +45,7 @@ export default function ContactSection() {
             // 2. Open WhatsApp after a short delay so the mail client has time to open
             setTimeout(() => {
                 const whatsappText = encodeURIComponent(`*New Project Inquiry*\n\n*Name:* ${formData.name}\n*Business:* ${formData.businessType}\n*Project:* ${formData.projectType}\n*Budget:* ${formData.budget || 'Not specified'}\n*Message:* ${formData.message}`);
-                window.open(`https://wa.me/917865055431?text=${whatsappText}`, '_blank');
+                window.open(`https://wa.me/918372932895?text=${whatsappText}`, '_blank');
             }, 1000);
 
             setIsSuccess(true);
@@ -100,7 +100,7 @@ export default function ContactSection() {
                                 </div>
                                 <div>
                                     <h4 className="text-foreground font-medium mb-1">WhatsApp</h4>
-                                    <a href="https://wa.me/917865055431" target="_blank" className="text-muted hover:text-accent transition-colors cursor-hover">+91 78650 55431</a>
+                                    <a href="https://wa.me/918372932895" target="_blank" className="text-muted hover:text-accent transition-colors cursor-hover">+91 83729 32895</a>
                                 </div>
                             </div>
 
