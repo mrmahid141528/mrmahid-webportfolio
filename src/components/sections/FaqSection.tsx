@@ -7,7 +7,7 @@ import { Plus, Minus } from 'lucide-react';
 const faqs = [
     {
         question: "How long does it take to build a website?",
-        answer: "The timeline depends entirely on the project type and the features required. A simple business website or portfolio can be completed in 1 to 2 weeks. However, custom web applications, school portals, or comprehensive e-commerce stores may take 4 to 6 weeks or more."
+        answer: "The timeline depends entirely on the project type and the features required. A simple business website or portfolio can be completed in 2 to 5 days. However, custom web applications, school portals, or comprehensive e-commerce stores may take 1 to 20 weeks or more."
     },
     {
         question: "How much will the website development cost?",
