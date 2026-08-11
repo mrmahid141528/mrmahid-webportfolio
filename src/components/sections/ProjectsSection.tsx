@@ -93,7 +93,7 @@ const ProjectCard = ({ project }: { project: typeof projectsData[0] }) => {
                     <div className="absolute inset-0 bg-gray-800 animate-pulse" /> {/* Placeholder loading */}
                     <div
                         className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                        style={{ backgroundImage: `url(${project.image})` }}
+                        style={{ backgroundImage: `url('${project.image}')` }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent opacity-80" />
 
