@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description: "I build premium, high-converting digital experiences. Expert in Next.js, React, and modern UI/UX design.",
     siteName: "Mr Mahid Web Design Portfolio",
     images: [{
-      url: "/AUTHLAB%20Thumbnail.png", // Must be fully qualified for OG or relative to metadataBase
+      url: "/Mr%20Mahid%20DP.png", // Must be fully qualified for OG or relative to metadataBase
       width: 1200,
       height: 630,
       alt: "Mr Mahid - Web Designer Portfolio",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Mr Mahid | Premium Web Designer",
     description: "Premium Web Design & Development services using modern Next.js stack.",
     creator: "@mrmahid", // Optional: Update if you have a handle
-    images: ["https://www.mrmahid.com/AUTHLAB%20Thumbnail.png"],
+    images: ["https://www.mrmahid.com/Mr%20Mahid%20DP.png"],
   },
   robots: {
     index: true,
