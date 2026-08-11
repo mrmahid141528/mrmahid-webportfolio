@@ -33,7 +33,7 @@ const projectsData = [
         category: 'Website',
         description: 'A premium, high-fidelity glassmorphism authentication system featuring customizable background rendering and responsive UI layout. Designed for secure and beautiful user access.',
         tools: ['Next.js', 'Tailwind CSS', 'Framer Motion'],
-        image: '/auth-lab-preview.png',       // 📸 Replace with real screenshot later
+        image: '/AUTHLAB Thumbnail.png',       // 📸 Replace with real screenshot later
         link: 'https://auth-lab-three.vercel.app/',
     },
 ];
