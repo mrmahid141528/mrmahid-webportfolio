@@ -172,9 +172,9 @@ export default function MorsePracticePad() {
                         </div>
 
                         {/* SEQUENCE DISPLAY */}
-                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 relative overflow-hidden flex-1 lg:flex-none lg:h-[130px] flex flex-col h-[60px] sm:h-[80px] min-h-[60px]">
-                            <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-1">
-                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">History</h3>
+                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 lg:p-6 relative overflow-hidden flex-1 lg:flex-1 flex flex-col h-[60px] sm:h-[80px] lg:h-auto min-h-[60px]">
+                            <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-1 lg:mb-2">
+                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Morse Sequence</h3>
                                 <button onClick={handleCopyMorse} className="text-[#555] hover:text-[#1eff00] transition-colors" title="Copy Sequence">
                                     {copiedMorse ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#1eff00]" /> : <Copy className="w-3 h-3 md:w-3.5 md:h-3.5" />}
                                 </button>
