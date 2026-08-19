@@ -32,7 +32,7 @@ const nodes: MorseNode[] = [
     { id: 'P', type: 'dot', L: 70, T: 75, pos: 'r', parentId: 'W' },
 
     { id: 'U', type: 'dash', L: 70, T: 35, pos: 'l', parentId: 'I' },
-    { id: 'F', type: 'dot', L: 77, T: 35, pos: 'r', parentId: 'U' },
+    { id: 'F', type: 'dot', L: 70, T: 46, pos: 'r', parentId: 'U' },
 
     { id: 'V', type: 'dash', L: 80, T: 35, pos: 'r', parentId: 'S' },
 
@@ -129,7 +129,7 @@ export default function MorseTree({ currentDecoded }: MorseTreeProps) {
                         >
                             {/* Node Geometric Shape */}
                             <div className={`relative transition-all duration-300 z-10 ${isDash ? 'w-6 h-3 rounded-[3px]' : 'w-4 h-4 rounded-full'} ${isActive ? 'bg-[#1eff00] shadow-[0_0_15px_rgba(30,255,0,0.8),_inset_0_0_5px_rgba(255,255,255,0.8)] border-[#1eff00]'
-                                    : 'bg-[#1c1c1c] shadow-[0_2px_4px_rgba(0,0,0,0.8),_inset_0_1px_2px_rgba(255,255,255,0.05)] border border-[#333]'
+                                : 'bg-[#1c1c1c] shadow-[0_2px_4px_rgba(0,0,0,0.8),_inset_0_1px_2px_rgba(255,255,255,0.05)] border border-[#333]'
                                 }`}>
 
                                 {/* Positioned Label */}
