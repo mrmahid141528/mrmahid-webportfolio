@@ -142,21 +142,21 @@ export default function MorsePracticePad() {
             <div className="flex-1 w-full flex flex-col lg:grid lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_350px] gap-2 md:gap-4 lg:gap-4 px-0 lg:px-2 xl:px-4 min-h-0 overflow-hidden pb-0 lg:pb-1">
 
                 {/* Left/Top Area: Morse Tree */}
-                <div className="order-1 lg:order-1 min-h-[180px] h-[35vh] sm:h-[40vh] lg:h-full w-full relative">
+                <div className="order-1 lg:order-1 min-h-[220px] lg:min-h-0 flex-1 lg:h-full w-full relative">
                     <MorseTree currentDecoded={latestDecodedChar} />
                 </div>
 
                 {/* Right/Middle Area: Displays */}
-                <div className="order-2 lg:order-2 flex flex-col w-full space-y-2 lg:space-y-3 min-h-0 overflow-hidden h-full">
+                <div className="order-2 lg:order-2 flex flex-col w-full space-y-2 lg:space-y-3 shrink-0 lg:shrink lg:h-full overflow-hidden">
 
                     <div className="hidden lg:block shrink-0">
                         <SignalDisplay currentSignal={currentSignal} />
                     </div>
 
                     {/* Mobile combined row for Output and Morse Code */}
-                    <div className="flex flex-row lg:flex-col gap-2 lg:gap-3 flex-1 overflow-hidden lg:h-full">
+                    <div className="flex flex-row lg:flex-col gap-2 lg:gap-3 shrink-0 lg:flex-1 overflow-hidden lg:h-full">
                         {/* OUTPUT DISPLAY */}
-                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[1] lg:flex-[1.5] xl:flex-[2] flex flex-col min-h-[60px] lg:min-h-[80px]">
+                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[1] lg:flex-[1.5] xl:flex-[2] flex flex-col h-[75px] sm:h-[90px] lg:h-auto lg:min-h-[80px]">
                             <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-1 lg:mb-2 shrink-0">
                                 <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Output</h3>
                                 <button onClick={handleCopyOutput} className="text-[#555] hover:text-[#1eff00] transition-colors" title="Copy Output">
@@ -172,7 +172,7 @@ export default function MorsePracticePad() {
                         </div>
 
                         {/* SEQUENCE DISPLAY */}
-                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[0.8] lg:flex-[1] xl:flex-[1.5] flex flex-col min-h-[60px] lg:min-h-[60px]">
+                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[0.8] lg:flex-[1] xl:flex-[1.5] flex flex-col h-[75px] sm:h-[90px] lg:h-auto lg:min-h-[60px]">
                             <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-1 lg:mb-2 shrink-0">
                                 <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Morse Sequence</h3>
                                 <button onClick={handleCopyMorse} className="text-[#555] hover:text-[#1eff00] transition-colors" title="Copy Sequence">
