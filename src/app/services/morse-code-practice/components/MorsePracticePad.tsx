@@ -17,6 +17,7 @@ export default function MorsePracticePad() {
     const [decodedOutput, setDecodedOutput] = useState("");
     const [showHelp, setShowHelp] = useState(false);
     const [status, setStatus] = useState<"READY" | "TRANSMITTING" | "DECODING">("READY");
+    const [isAwake, setIsAwake] = useState(false);
 
     const inactivityTimer = useRef<NodeJS.Timeout | null>(null);
 
@@ -78,13 +79,33 @@ export default function MorsePracticePad() {
 
             {/* Header */}
             <header className="flex justify-between items-center mb-2 md:mb-5 pl-2 pr-2 md:pl-8 md:pr-8 flex-shrink-0">
-                <div>
+                <div className="shrink-0">
                     <h1 className="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] text-[#cccccc] uppercase leading-tight">
                         MORSE <span className="text-[#1eff00]" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>CODE</span>
                     </h1>
                     <p className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-[#666] mt-0.5">PRACTICE PAD</p>
                 </div>
-                <div className="flex space-x-2 md:space-x-4">
+
+                <div className="flex-1 flex justify-center px-1 md:px-2 z-10 w-0 overflow-visible">
+                    <AnimatePresence>
+                        {!isAwake && (
+                            <motion.div
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
+                                className="flex items-center justify-center px-2 md:px-4 py-1.5 md:py-2 bg-[#1eff00]/10 border border-[#1eff00]/30 rounded-full shadow-[0_0_15px_rgba(30,255,0,0.1)] whitespace-nowrap min-w-max"
+                            >
+                                <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#1eff00] animate-pulse mr-1.5 md:mr-2" style={{ boxShadow: "0 0 8px #1eff00" }} />
+                                <span className="text-[8px] sm:text-[9px] md:text-xs font-bold font-mono tracking-[0.1em] md:tracking-widest text-[#1eff00] text-center" style={{ textShadow: "0 0 5px rgba(30,255,0,0.5)" }}>
+                                    <span className="hidden sm:inline">PRESS SPACE OR TAP TO WAKE</span>
+                                    <span className="sm:hidden">TAP TO WAKE</span>
+                                </span>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                <div className="flex space-x-2 md:space-x-4 shrink-0">
                     <button
                         onClick={() => setIsSoundEnabled(!isSoundEnabled)}
                         className={`flex items-center space-x-1 md:space-x-2 px-2 md:px-4 py-1.5 md:py-2 rounded-lg border border-[#222] shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all active:scale-95 ${isSoundEnabled ? 'bg-gradient-to-b from-[#222] to-[#111] text-[#1eff00]' : 'bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] text-gray-600'}`}
@@ -171,6 +192,8 @@ export default function MorsePracticePad() {
                         onPressStart={handlePressStart}
                         onPressEnd={handlePressEnd}
                         isSoundEnabled={isSoundEnabled}
+                        isAwake={isAwake}
+                        setIsAwake={setIsAwake}
                     />
                 </div>
 
