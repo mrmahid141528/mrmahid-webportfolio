@@ -136,7 +136,7 @@ export default function MorseKey({ onSignal, onPressStart, onPressEnd, isSoundEn
                     </div>
 
                     {/* Instruction Text Below the lever inside the recess */}
-                    <p className={`absolute bottom-3 w-full text-center text-[9px] sm:text-[10px] lg:text-xs font-mono font-bold tracking-[0.2em] transition-colors duration-300 uppercase ${isPressed ? 'text-[#1eff00]' : 'text-[#666]'}`} style={isPressed ? { textShadow: '0 0 10px rgba(30, 255, 0, 0.4)' } : {}}>
+                    <p className={`absolute bottom-3 w-full text-center text-[9px] sm:text-[10px] lg:text-xs font-mono font-bold tracking-[0.2em] transition-colors duration-300 uppercase hidden sm:block ${isPressed ? 'text-[#1eff00]' : 'text-[#666]'}`} style={isPressed ? { textShadow: '0 0 10px rgba(30, 255, 0, 0.4)' } : {}}>
                         PRESS & HOLD TO TRANSMIT
                     </p>
                 </div>

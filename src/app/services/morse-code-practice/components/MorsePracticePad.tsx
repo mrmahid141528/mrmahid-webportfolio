@@ -74,13 +74,26 @@ export default function MorsePracticePad() {
         }
     };
 
-    const handleClear = () => {
+    const handleClear = useCallback(() => {
         setCurrentSignal("");
         setCompletedMorse("");
         setDecodedOutput("");
         setStatus("READY");
         if (inactivityTimer.current) clearTimeout(inactivityTimer.current);
-    };
+    }, []);
+
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'c') {
+                if (window.getSelection()?.toString().length === 0) {
+                    e.preventDefault();
+                    handleClear();
+                }
+            }
+        };
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [handleClear]);
 
     const latestDecodedChar = decodedOutput.length > 0 ? decodedOutput[decodedOutput.length - 1] : "";
 

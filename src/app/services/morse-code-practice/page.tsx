@@ -7,10 +7,10 @@ import { ArrowLeft } from "lucide-react";
 
 export default function MorseCodePracticePage() {
     return (
-        <div className="flex min-h-[100dvh] w-full bg-[#050505] p-0 sm:p-2 lg:p-4 items-center justify-center relative">
+        <div className="fixed inset-0 z-[100] flex min-h-[100dvh] w-full bg-[#050505] p-0 sm:p-2 lg:p-4 items-center justify-center overflow-hidden">
             <Link
                 href="/services"
-                className="absolute top-6 left-6 z-50 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white/70 hover:text-white flex items-center space-x-2 transition-all backdrop-blur-md"
+                className="absolute top-6 left-6 z-[110] px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-white/70 hover:text-white flex items-center space-x-2 transition-all backdrop-blur-md"
             >
                 <ArrowLeft className="w-4 h-4" />
                 <span className="text-sm font-medium">Back to Services</span>

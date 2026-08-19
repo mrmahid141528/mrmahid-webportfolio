@@ -92,6 +92,8 @@ export default function ServicesPage() {
 // ------------------------------------------------------------------------------------------------ //
 
 function MorseCodeDetailedPreview() {
+    const [showHelp, setShowHelp] = useState(false);
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -138,7 +140,7 @@ function MorseCodeDetailedPreview() {
                             <span>Start Practicing</span>
                             <Activity className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                         </Link>
-                        <button className="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#333] text-white font-semibold rounded-xl md:rounded-full hover:bg-white/5 transition-colors flex items-center justify-center space-x-2 hover:border-[#555]">
+                        <button onClick={() => setShowHelp(true)} className="w-full sm:w-auto px-8 py-4 bg-transparent border border-[#333] text-white font-semibold rounded-xl md:rounded-full hover:bg-white/5 transition-colors flex items-center justify-center space-x-2 hover:border-[#555]">
                             <span>How It Works</span>
                             <PlayCircle className="w-4 h-4 text-gray-400" />
                         </button>
@@ -209,6 +211,48 @@ function MorseCodeDetailedPreview() {
                     ))}
                 </div>
             </div>
+
+            <AnimatePresence>
+                {showHelp && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+                        onClick={() => setShowHelp(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.95, opacity: 0 }}
+                            className="bg-[#111] border border-[#222] rounded-3xl p-6 md:p-8 max-w-sm w-full shadow-2xl"
+                            onClick={e => e.stopPropagation()}
+                        >
+                            <h2 className="text-base md:text-lg font-bold tracking-widest text-white mb-4 md:mb-6 border-b border-[#222] pb-3 md:pb-4">HOW TO PRACTICE</h2>
+                            <ul className="space-y-3 md:space-y-4 text-[10px] md:text-xs font-mono text-gray-400">
+                                <li className="flex justify-between items-center bg-[#0a0a0a] p-2.5 md:p-3 rounded-lg border border-[#222]"><span className="text-white uppercase tracking-wider">Short Press</span> <span className="text-[#1eff00] font-bold text-lg md:text-xl leading-none" style={{ textShadow: "0 0 10px rgba(30,255,0,0.5)" }}>.</span></li>
+                                <li className="flex justify-between items-center bg-[#0a0a0a] p-2.5 md:p-3 rounded-lg border border-[#222]"><span className="text-white uppercase tracking-wider">Long Press</span> <span className="text-[#1eff00] font-bold text-lg md:text-xl leading-none" style={{ textShadow: "0 0 10px rgba(30,255,0,0.5)" }}>-</span></li>
+                            </ul>
+                            <div className="mt-6 md:mt-8 pt-4 md:pt-6 border-t border-[#222] flex flex-col space-y-4 md:space-y-6">
+                                <div>
+                                    <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#666] mb-1.5 md:mb-2 font-bold">Desktop</p>
+                                    <p className="text-[#aaa] text-[10px] md:text-xs">Press & hold <kbd className="px-1.5 py-0.5 md:px-2 md:py-1 bg-[#222] rounded border border-[#333] font-mono text-[#1eff00]">SPACEBAR</kbd></p>
+                                </div>
+                                <div>
+                                    <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#666] mb-1.5 md:mb-2 font-bold">Mobile</p>
+                                    <p className="text-[#aaa] text-[10px] md:text-xs">Tap & hold the interactive lever on screen.</p>
+                                </div>
+                            </div>
+                            <button
+                                onClick={() => setShowHelp(false)}
+                                className="w-full mt-6 md:mt-8 py-2.5 md:py-3 bg-[#111] text-[#1eff00] border border-[#222] rounded-xl hover:bg-[#1a1a1a] transition-colors uppercase text-[10px] font-bold tracking-widest shadow-[0_0_15px_rgba(30,255,0,0.1)]"
+                            >
+                                Close
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.div>
     );
 }
