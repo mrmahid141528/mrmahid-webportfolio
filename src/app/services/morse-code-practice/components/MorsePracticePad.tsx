@@ -86,17 +86,17 @@ export default function MorsePracticePad() {
                     <p className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-[#666] mt-0.5">PRACTICE PAD</p>
                 </div>
 
-                <div className="flex-1 flex justify-center px-1 md:px-2 z-10 w-0 overflow-visible">
+                <div className="flex-1 flex justify-center px-2 md:px-4 z-10 w-full overflow-hidden">
                     <AnimatePresence>
                         {!isAwake && (
                             <motion.div
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
-                                className="flex items-center justify-center whitespace-nowrap min-w-max animate-pulse"
+                                className="flex items-center justify-center animate-pulse"
                             >
-                                <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#1eff00] mr-2 md:mr-3" style={{ boxShadow: "0 0 10px #1eff00" }} />
-                                <h2 className="text-sm sm:text-base md:text-xl lg:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] text-[#1eff00] uppercase leading-tight" style={{ textShadow: "0 0 15px rgba(30,255,0,0.6)" }}>
+                                <div className="w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full bg-[#1eff00] mr-2 md:mr-3 shrink-0" style={{ boxShadow: "0 0 10px #1eff00" }} />
+                                <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold tracking-widest text-[#1eff00] uppercase leading-tight text-center" style={{ textShadow: "0 0 15px rgba(30,255,0,0.6)" }}>
                                     <span className="hidden lg:inline">PRESS SPACE OR TAP TO START</span>
                                     <span className="hidden sm:inline lg:hidden">TAP / SPACE TO START</span>
                                     <span className="sm:hidden">TAP TO START</span>
@@ -140,20 +140,25 @@ export default function MorsePracticePad() {
                     </div>
 
                     {/* Mobile combined row for Output and Morse Code */}
-                    <div className="flex flex-row lg:flex-col gap-2 lg:gap-5">
+                    <div className="flex flex-row lg:flex-col gap-2 lg:gap-5 flex-1 min-h-[80px] lg:min-h-0">
                         {/* OUTPUT DISPLAY */}
-                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 relative overflow-hidden flex-1 flex flex-col justify-center items-center h-[60px] sm:h-[80px] lg:h-[120px]">
-                            <h3 className="absolute top-2 left-3 md:top-4 md:left-5 text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Output</h3>
-                            <div className="text-2xl sm:text-3xl lg:text-5xl font-mono font-bold text-[#1eff00] tracking-[0.2em] break-all self-center mt-2 md:mt-4 truncate" style={{ textShadow: "0 0 15px rgba(30, 255, 0, 0.6)" }}>
-                                {decodedOutput || <span className="text-white/5 uppercase">SOS</span>}
+                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 lg:p-6 relative overflow-hidden flex-1 lg:flex-[2] flex flex-col h-[60px] sm:h-[80px] lg:h-auto min-h-[60px]">
+                            <h3 className="absolute top-2 left-3 md:top-4 md:left-5 text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888] z-10 bg-[#121212] pr-2">Output</h3>
+                            <div className="w-full flex-1 overflow-y-auto overflow-x-hidden flex items-end lg:items-center mt-3 lg:mt-6">
+                                <div className="text-xl sm:text-3xl lg:text-5xl font-mono font-bold text-[#1eff00] tracking-[0.2em] break-words text-left w-full leading-tight" style={{ textShadow: "0 0 15px rgba(30, 255, 0, 0.6)" }}>
+                                    {decodedOutput || <span className="text-white/5 uppercase">SOS</span>}
+                                    {status !== 'READY' && <span className="inline-block w-2 md:w-3 lg:w-4 h-4 sm:h-5 lg:h-8 bg-[#1eff00] animate-pulse ml-1 align-baseline translate-y-1 lg:translate-y-0" style={{ boxShadow: "0 0 10px #1eff00" }} />}
+                                </div>
                             </div>
                         </div>
 
                         {/* SEQUENCE DISPLAY */}
-                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 relative overflow-hidden flex-1 h-[60px] sm:h-[80px] lg:h-[100px] flex flex-col justify-end">
-                            <h3 className="absolute top-2 left-3 text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888] mb-1 md:mb-2">History</h3>
-                            <div className="text-sm md:text-xl text-[#1eff00] font-bold tracking-[0.2em] md:tracking-[0.3em] font-mono break-all opacity-90 truncate w-full pl-1" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>
-                                {completedMorse || <span className="text-white/5">... --- ...</span>}
+                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 relative overflow-hidden flex-1 lg:flex-none lg:h-[130px] flex flex-col h-[60px] sm:h-[80px] min-h-[60px]">
+                            <h3 className="absolute top-2 left-3 text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888] mb-1 md:mb-2 z-10 bg-[#121212] pr-2">History</h3>
+                            <div className="flex-1 w-full overflow-y-auto overflow-x-hidden shrink flex items-end mt-3 lg:mt-6">
+                                <div className="text-xs sm:text-sm md:text-xl text-[#1eff00] font-bold tracking-[0.2em] md:tracking-[0.3em] font-mono break-words opacity-90 w-full pl-1 leading-snug" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>
+                                    {completedMorse || <span className="text-white/5">... --- ...</span>}
+                                </div>
                             </div>
                         </div>
                     </div>
