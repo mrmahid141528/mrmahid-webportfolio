@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { LayoutDashboard, Code, Smartphone, Monitor, Palette, ChevronRight, Activity, Zap, Shield } from "lucide-react";
 
@@ -32,6 +33,15 @@ const SERVICES = [
         icon: <Code className="w-5 h-5" />,
         description: "Scalable backend solutions and database structures tailored for your business.",
         features: ["Node.js / Express", "PostgreSQL / MongoDB", "Microservices", "Cloud Deployments"],
+    },
+    {
+        id: "morse-code",
+        title: "Morse Code Practice",
+        icon: <Zap className="w-5 h-5" />,
+        description: "Interactive Web-Based Morse Code Practice Tool simulating a real telegraph.",
+        features: ["Realistic Audio", "Auto-Decoding", "Spacebar/Touch Input", "Retro UI"],
+        link: "/services/morse-code-practice",
+        actionText: "Open Practice Pad"
     },
 ];
 
@@ -138,9 +148,16 @@ export default function ServicesPage() {
                             </div>
 
                             <div className="mt-12 pt-8 border-t border-white/10">
-                                <button className="px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 active:scale-95 duration-200">
-                                    Request Configuration
-                                </button>
+                                {/* @ts-ignore */}
+                                {activeContent.link ? (
+                                    <Link href={(activeContent as any).link} className="inline-block px-8 py-4 bg-primary text-black font-semibold rounded-full hover:bg-primary/90 transition-colors shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:scale-105 active:scale-95 duration-200 text-center">
+                                        {(activeContent as any).actionText || "Learn More"}
+                                    </Link>
+                                ) : (
+                                    <button className="px-8 py-4 bg-white text-black font-semibold rounded-full hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:scale-105 active:scale-95 duration-200">
+                                        Request Configuration
+                                    </button>
+                                )}
                             </div>
 
                         </motion.div>
