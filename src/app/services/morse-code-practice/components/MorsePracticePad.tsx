@@ -98,19 +98,19 @@ export default function MorsePracticePad() {
     const latestDecodedChar = decodedOutput.length > 0 ? decodedOutput[decodedOutput.length - 1] : "";
 
     return (
-        <div className="w-full h-full border-0 md:border-4 border-[#1a1a1a] rounded-none md:rounded-[30px] lg:rounded-[40px] bg-gradient-to-br from-[#121212] via-[#0a0a0a] to-[#050505] p-2 sm:p-4 lg:p-4 flex flex-col font-mono relative shadow-none md:shadow-[0_0_50px_rgba(0,0,0,0.8),_inset_0_2px_10px_rgba(255,255,255,0.05)] pt-16 md:pt-4 overflow-hidden">
+        <div className="w-full h-full border-0 md:border-4 dark:border-[#1a1a1a] border-gray-200 rounded-none md:rounded-[30px] lg:rounded-[40px] dark:bg-gradient-to-br dark:from-[#121212] dark:via-[#0a0a0a] dark:to-[#050505] bg-white p-2 sm:p-4 lg:p-4 flex flex-col font-mono relative shadow-none md:dark:shadow-[0_0_50px_rgba(0,0,0,0.8),_inset_0_2px_10px_rgba(255,255,255,0.05)] md:shadow-2xl pt-16 md:pt-4 overflow-hidden transition-colors">
 
             {/* Structural screws (desktop only) */}
-            <div className="hidden md:flex absolute top-4 left-4 w-3 h-3 rounded-full bg-[#111] border border-[#222] shadow-[inset_0_2px_5px_rgba(0,0,0,0.8)] items-center justify-center"><div className="w-full h-px bg-black rotate-45" /></div>
-            <div className="hidden md:flex absolute top-4 right-4 w-3 h-3 rounded-full bg-[#111] border border-[#222] shadow-[inset_0_2px_5px_rgba(0,0,0,0.8)] items-center justify-center"><div className="w-full h-px bg-black -rotate-12" /></div>
+            <div className="hidden md:flex absolute top-4 left-4 w-3 h-3 rounded-full dark:bg-[#111] bg-gray-300 border dark:border-[#222] border-gray-400 dark:shadow-[inset_0_2px_5px_rgba(0,0,0,0.8)] shadow-inner items-center justify-center transition-colors"><div className="w-full h-px dark:bg-black bg-gray-500 rotate-45" /></div>
+            <div className="hidden md:flex absolute top-4 right-4 w-3 h-3 rounded-full dark:bg-[#111] bg-gray-300 border dark:border-[#222] border-gray-400 dark:shadow-[inset_0_2px_5px_rgba(0,0,0,0.8)] shadow-inner items-center justify-center transition-colors"><div className="w-full h-px dark:bg-black bg-gray-500 -rotate-12" /></div>
 
             {/* Header */}
             <header className="flex justify-between items-center mb-2 md:mb-3 pl-2 pr-2 md:px-4 flex-shrink-0">
                 <div className="shrink-0">
-                    <h1 className="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] text-[#cccccc] uppercase leading-tight">
-                        MORSE <span className="text-[#1eff00]" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>CODE</span>
+                    <h1 className="text-xl md:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] dark:text-[#cccccc] text-gray-800 uppercase leading-tight transition-colors">
+                        MORSE <span className="dark:text-[#1eff00] text-emerald-600" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>CODE</span>
                     </h1>
-                    <p className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] text-[#666] mt-0.5">PRACTICE PAD</p>
+                    <p className="text-[8px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.4em] dark:text-[#666] text-gray-500 mt-0.5 transition-colors">PRACTICE PAD</p>
                 </div>
 
                 <div className="flex-1 flex justify-center px-2 md:px-4 z-10 w-full overflow-hidden">
@@ -122,8 +122,8 @@ export default function MorsePracticePad() {
                                 exit={{ opacity: 0, scale: 0.9 }}
                                 className="flex items-center justify-center animate-pulse"
                             >
-                                <div className="w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full bg-[#1eff00] mr-2 md:mr-3 shrink-0" style={{ boxShadow: "0 0 10px #1eff00" }} />
-                                <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold tracking-widest text-[#1eff00] uppercase leading-tight text-center" style={{ textShadow: "0 0 15px rgba(30,255,0,0.6)" }}>
+                                <div className="w-1.5 h-1.5 md:w-2.5 md:h-2.5 rounded-full dark:bg-[#1eff00] bg-emerald-500 mr-2 md:mr-3 shrink-0" style={{ boxShadow: "0 0 10px #1eff00" }} />
+                                <h2 className="text-xs sm:text-sm md:text-lg lg:text-xl font-bold tracking-widest dark:text-[#1eff00] text-emerald-600 uppercase leading-tight text-center" style={{ textShadow: "0 0 15px rgba(30,255,0,0.6)" }}>
                                     <span className="hidden lg:inline">PRESS SPACE OR TAP TO START</span>
                                     <span className="hidden sm:inline lg:hidden">TAP / SPACE TO START</span>
                                     <span className="sm:hidden">TAP TO START</span>
@@ -136,14 +136,14 @@ export default function MorsePracticePad() {
                 <div className="flex space-x-2 md:space-x-4 shrink-0">
                     <button
                         onClick={() => setIsSoundEnabled(!isSoundEnabled)}
-                        className={`flex items-center space-x-1 md:space-x-2 px-2 md:px-4 py-1.5 md:py-2 rounded-lg border border-[#222] shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all active:scale-95 ${isSoundEnabled ? 'bg-gradient-to-b from-[#222] to-[#111] text-[#1eff00]' : 'bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] text-gray-600'}`}
+                        className={`flex items-center space-x-1 md:space-x-2 px-2 md:px-4 py-1.5 md:py-2 rounded-lg border dark:border-[#222] border-gray-200 dark:shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] shadow-sm transition-all active:scale-95 ${isSoundEnabled ? 'dark:bg-gradient-to-b dark:from-[#222] dark:to-[#111] bg-gray-100 dark:text-[#1eff00] text-emerald-600' : 'dark:bg-gradient-to-b dark:from-[#1a1a1a] dark:to-[#0a0a0a] bg-white text-gray-400'}`}
                     >
                         {isSoundEnabled ? <Volume2 className="w-3.5 h-3.5 md:w-4 md:h-4" /> : <VolumeX className="w-3.5 h-3.5 md:w-4 md:h-4" />}
                         <span className="hidden sm:inline text-[10px] font-bold tracking-widest">SOUND</span>
                     </button>
                     <button
                         onClick={() => setShowHelp(true)}
-                        className="flex items-center space-x-1 md:space-x-2 px-2 md:px-4 py-1.5 md:py-2 rounded-lg border border-[#222] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] text-[#888] hover:text-white shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] transition-all active:scale-95"
+                        className="flex items-center space-x-1 md:space-x-2 px-2 md:px-4 py-1.5 md:py-2 rounded-lg border dark:border-[#222] border-gray-200 dark:bg-gradient-to-b dark:from-[#1a1a1a] dark:to-[#0a0a0a] bg-white dark:text-[#888] text-gray-500 dark:hover:text-white hover:text-gray-900 dark:shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] shadow-sm transition-all active:scale-95"
                     >
                         <HelpCircle className="w-3.5 h-3.5 md:w-4 md:h-4" />
                         <span className="hidden sm:inline text-[10px] font-bold tracking-widest">HELP</span>
@@ -169,48 +169,48 @@ export default function MorsePracticePad() {
                     {/* Mobile combined row for Output and Morse Code */}
                     <div className="flex flex-row lg:flex-col gap-2 lg:gap-3 shrink-0 lg:flex-1 overflow-hidden lg:h-full">
                         {/* OUTPUT DISPLAY */}
-                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[1] lg:flex-[1.5] xl:flex-[2] flex flex-col h-[75px] sm:h-[90px] lg:h-auto lg:min-h-[80px]">
-                            <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-1 lg:mb-2 shrink-0">
-                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Output</h3>
-                                <button onClick={handleCopyOutput} className="text-[#555] hover:text-[#1eff00] transition-colors" title="Copy Output">
-                                    {copiedOutput ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#1eff00]" /> : <Copy className="w-3 h-3 md:w-3.5 md:h-3.5" />}
+                        <div className="dark:bg-[#121212] bg-gray-50 rounded-[16px] md:rounded-[20px] dark:shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] shadow-inner border-t dark:border-[#222] border-gray-200 border-l border-r dark:border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[1] lg:flex-[1.5] xl:flex-[2] flex flex-col h-[75px] sm:h-[90px] lg:h-auto lg:min-h-[80px] transition-colors">
+                            <div className="flex justify-between items-center dark:bg-[#121212] bg-gray-50 z-10 w-full mb-1 lg:mb-2 shrink-0 transition-colors">
+                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] dark:text-[#888] text-gray-500">Output</h3>
+                                <button onClick={handleCopyOutput} className="dark:text-[#555] text-gray-400 dark:hover:text-[#1eff00] hover:text-emerald-500 transition-colors" title="Copy Output">
+                                    {copiedOutput ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5 dark:text-[#1eff00] text-emerald-600" /> : <Copy className="w-3 h-3 md:w-3.5 md:h-3.5" />}
                                 </button>
                             </div>
                             <div className="w-full flex-1 overflow-y-auto overflow-x-hidden flex items-start">
-                                <div className="text-xl sm:text-3xl lg:text-5xl font-mono font-bold text-[#1eff00] tracking-[0.2em] break-words text-left w-full leading-tight" style={{ textShadow: "0 0 15px rgba(30, 255, 0, 0.6)" }}>
-                                    {decodedOutput || <span className="text-white/5 uppercase">SOS</span>}
-                                    {status !== 'READY' && <span className="inline-block w-2 md:w-3 lg:w-4 h-4 sm:h-5 lg:h-8 bg-[#1eff00] animate-pulse ml-1 align-baseline translate-y-1 lg:translate-y-0" style={{ boxShadow: "0 0 10px #1eff00" }} />}
+                                <div className="text-xl sm:text-3xl lg:text-5xl font-mono font-bold dark:text-[#1eff00] text-emerald-600 tracking-[0.2em] break-words text-left w-full leading-tight" style={{ textShadow: "0 0 15px rgba(30, 255, 0, 0.6)" }}>
+                                    {decodedOutput || <span className="dark:text-white/5 text-black/10 uppercase">SOS</span>}
+                                    {status !== 'READY' && <span className="inline-block w-2 md:w-3 lg:w-4 h-4 sm:h-5 lg:h-8 dark:bg-[#1eff00] bg-emerald-500 animate-pulse ml-1 align-baseline translate-y-1 lg:translate-y-0" style={{ boxShadow: "0 0 10px #1eff00" }} />}
                                 </div>
                             </div>
                         </div>
 
                         {/* SEQUENCE DISPLAY */}
-                        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[0.8] lg:flex-[1] xl:flex-[1.5] flex flex-col h-[75px] sm:h-[90px] lg:h-auto lg:min-h-[60px]">
-                            <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-1 lg:mb-2 shrink-0">
-                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Morse Sequence</h3>
-                                <button onClick={handleCopyMorse} className="text-[#555] hover:text-[#1eff00] transition-colors" title="Copy Sequence">
-                                    {copiedMorse ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#1eff00]" /> : <Copy className="w-3 h-3 md:w-3.5 md:h-3.5" />}
+                        <div className="dark:bg-[#121212] bg-gray-50 rounded-[16px] md:rounded-[20px] dark:shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] shadow-inner border-t dark:border-[#222] border-gray-200 border-l border-r dark:border-[#1a1a1a] p-3 md:p-4 lg:p-5 relative overflow-hidden flex-[0.8] lg:flex-[1] xl:flex-[1.5] flex flex-col h-[75px] sm:h-[90px] lg:h-auto lg:min-h-[60px] transition-colors">
+                            <div className="flex justify-between items-center dark:bg-[#121212] bg-gray-50 z-10 w-full mb-1 lg:mb-2 shrink-0 transition-colors">
+                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] dark:text-[#888] text-gray-500">Morse Sequence</h3>
+                                <button onClick={handleCopyMorse} className="dark:text-[#555] text-gray-400 dark:hover:text-[#1eff00] hover:text-emerald-500 transition-colors" title="Copy Sequence">
+                                    {copiedMorse ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5 dark:text-[#1eff00] text-emerald-600" /> : <Copy className="w-3 h-3 md:w-3.5 md:h-3.5" />}
                                 </button>
                             </div>
                             <div className="flex-1 w-full overflow-y-auto overflow-x-hidden shrink flex items-start">
-                                <div className="text-xs sm:text-sm md:text-xl text-[#1eff00] font-bold tracking-[0.2em] md:tracking-[0.3em] font-mono break-words opacity-90 w-full pl-1 leading-snug" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>
-                                    {completedMorse || <span className="text-white/5">... --- ...</span>}
+                                <div className="text-xs sm:text-sm md:text-xl dark:text-[#1eff00] text-emerald-600 font-bold tracking-[0.2em] md:tracking-[0.3em] font-mono break-words opacity-90 w-full pl-1 leading-snug" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>
+                                    {completedMorse || <span className="dark:text-white/5 text-black/10">... --- ...</span>}
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     {/* STATUS PANEL */}
-                    <div className="hidden sm:flex bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-2 lg:p-3 items-center justify-between mt-auto shrink-0">
+                    <div className="hidden sm:flex dark:bg-[#121212] bg-gray-50 rounded-[16px] md:rounded-[20px] dark:shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] shadow-inner border-t dark:border-[#222] border-gray-200 border-l border-r dark:border-[#1a1a1a] p-2 lg:p-3 items-center justify-between mt-auto shrink-0 transition-colors">
                         <div>
-                            <h3 className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888] mb-1">Status</h3>
-                            <span className={`text-[10px] md:text-[11px] font-bold tracking-widest uppercase ${status === 'TRANSMITTING' ? 'text-[#1eff00]' : 'text-[#555]'}`}>
+                            <h3 className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] dark:text-[#888] text-gray-500 mb-1 transition-colors">Status</h3>
+                            <span className={`text-[10px] md:text-[11px] font-bold tracking-widest uppercase transition-colors ${status === 'TRANSMITTING' ? 'dark:text-[#1eff00] text-emerald-600' : 'dark:text-[#555] text-gray-400'}`}>
                                 {status === 'TRANSMITTING' ? 'Transmitting' : 'Practicing'}
                             </span>
                         </div>
                         <div className="flex space-x-1 opacity-50">
                             {[1, 2, 3, 4, 5, 4, 3, 2, 1].map((h, i) => (
-                                <div key={i} className={`w-1 rounded-full ${status === 'TRANSMITTING' ? 'bg-[#1eff00] animate-pulse' : 'bg-[#444]'}`} style={{ height: `${h * 4}px` }} />
+                                <div key={i} className={`w-1 rounded-full transition-colors ${status === 'TRANSMITTING' ? 'dark:bg-[#1eff00] bg-emerald-500 animate-pulse' : 'dark:bg-[#444] bg-gray-300'}`} style={{ height: `${h * 4}px` }} />
                             ))}
                         </div>
                     </div>
@@ -218,14 +218,14 @@ export default function MorsePracticePad() {
             </div>
 
             {/* Bottom Area: Controls Panel */}
-            <div className="mt-2 md:mt-3 mx-0 md:mx-auto w-full max-w-4xl bg-[#111] rounded-[20px] md:rounded-[30px] shadow-[0_5px_20px_rgba(0,0,0,0.5),_inset_0_1px_2px_rgba(255,255,255,0.05)] border border-[#1a1a1a] p-2 flex flex-row items-center justify-between relative shrink-0">
+            <div className="mt-2 md:mt-3 mx-0 md:mx-auto w-full max-w-4xl dark:bg-[#111] bg-white rounded-[20px] md:rounded-[30px] dark:shadow-[0_5px_20px_rgba(0,0,0,0.5),_inset_0_1px_2px_rgba(255,255,255,0.05)] shadow-xl border dark:border-[#1a1a1a] border-gray-200 p-2 flex flex-row items-center justify-between relative shrink-0 transition-colors">
 
                 {/* Beep Side Toggle (Always visible now) */}
-                <div className="flex flex-col items-center justify-center w-[50px] sm:w-[80px] lg:w-[100px] xl:w-[120px] h-[60px] sm:h-[80px] lg:h-[80px] xl:h-[90px] bg-[#0c0c0c] rounded-xl lg:rounded-2xl shadow-[inset_0_5px_15px_rgba(0,0,0,0.8)] border border-[#1a1a1a] cursor-pointer group shrink-0" onClick={() => setIsSoundEnabled(!isSoundEnabled)}>
-                    <div className={`w-10 sm:w-12 lg:w-16 h-8 sm:h-10 lg:h-12 rounded-lg lg:rounded-xl flex items-center justify-center shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] border border-[#222] transition-colors ${isSoundEnabled ? 'bg-gradient-to-b from-[#222] to-[#111]' : 'bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a]'}`}>
-                        {isSoundEnabled ? <Volume2 className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#1eff00]" /> : <VolumeX className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#555]" />}
+                <div className="flex flex-col items-center justify-center w-[50px] sm:w-[80px] lg:w-[100px] xl:w-[120px] h-[60px] sm:h-[80px] lg:h-[80px] xl:h-[90px] dark:bg-[#0c0c0c] bg-gray-50 rounded-xl lg:rounded-2xl dark:shadow-[inset_0_5px_15px_rgba(0,0,0,0.8)] shadow-inner border dark:border-[#1a1a1a] border-gray-200 cursor-pointer group shrink-0 transition-colors" onClick={() => setIsSoundEnabled(!isSoundEnabled)}>
+                    <div className={`w-10 sm:w-12 lg:w-16 h-8 sm:h-10 lg:h-12 rounded-lg lg:rounded-xl flex items-center justify-center dark:shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] shadow-sm border dark:border-[#222] border-gray-300 transition-colors ${isSoundEnabled ? 'dark:bg-gradient-to-b dark:from-[#222] dark:to-[#111] bg-gray-200' : 'dark:bg-gradient-to-b dark:from-[#1a1a1a] dark:to-[#0a0a0a] bg-white'}`}>
+                        {isSoundEnabled ? <Volume2 className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 dark:text-[#1eff00] text-emerald-600" /> : <VolumeX className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 dark:text-[#555] text-gray-400" />}
                     </div>
-                    <span className={`text-[7px] sm:text-[8px] lg:text-[9px] font-bold mt-1.5 lg:mt-3 tracking-[0.2em] transition-colors ${isSoundEnabled ? 'text-[#1eff00]' : 'text-[#555]'}`}>BEEP</span>
+                    <span className={`text-[7px] sm:text-[8px] lg:text-[9px] font-bold mt-1.5 lg:mt-3 tracking-[0.2em] transition-colors ${isSoundEnabled ? 'dark:text-[#1eff00] text-emerald-600' : 'dark:text-[#555] text-gray-400'}`}>BEEP</span>
                 </div>
 
                 {/* Center Morse Lever */}
@@ -241,12 +241,12 @@ export default function MorsePracticePad() {
                 </div>
 
                 {/* Clear Button (Always visible now) */}
-                <div className="flex flex-col items-center justify-center w-[50px] sm:w-[80px] lg:w-[120px] h-[60px] sm:h-[80px] lg:h-[80px] bg-[#0c0c0c] rounded-xl lg:rounded-2xl shadow-[inset_0_5px_15px_rgba(0,0,0,0.8)] border border-[#1a1a1a] cursor-pointer group active:scale-95 transition-all shrink-0" onClick={handleClear}>
-                    <div className="w-10 sm:w-14 lg:w-auto lg:px-6 h-8 sm:h-10 rounded-lg lg:rounded-full flex items-center justify-center space-x-0 lg:space-x-2 bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a] shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] border border-[#222] group-hover:border-[#444] transition-colors">
-                        <RotateCcw className="w-3 h-3 lg:w-3 lg:h-3 text-[#1eff00]" />
-                        <span className="hidden lg:inline text-[10px] font-bold tracking-[0.2em] text-[#1eff00]">CLEAR</span>
+                <div className="flex flex-col items-center justify-center w-[50px] sm:w-[80px] lg:w-[120px] h-[60px] sm:h-[80px] lg:h-[80px] dark:bg-[#0c0c0c] bg-gray-50 rounded-xl lg:rounded-2xl dark:shadow-[inset_0_5px_15px_rgba(0,0,0,0.8)] shadow-inner border dark:border-[#1a1a1a] border-gray-200 cursor-pointer group active:scale-95 transition-all shrink-0" onClick={handleClear}>
+                    <div className="w-10 sm:w-14 lg:w-auto lg:px-6 h-8 sm:h-10 rounded-lg lg:rounded-full flex items-center justify-center space-x-0 lg:space-x-2 dark:bg-gradient-to-b dark:from-[#1a1a1a] dark:to-[#0a0a0a] bg-white dark:shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] shadow-sm border dark:border-[#222] dark:group-hover:border-[#444] border-gray-300 hover:bg-gray-100 transition-colors">
+                        <RotateCcw className="w-3 h-3 lg:w-3 lg:h-3 dark:text-[#1eff00] text-emerald-600" />
+                        <span className="hidden lg:inline text-[10px] font-bold tracking-[0.2em] dark:text-[#1eff00] text-emerald-600">CLEAR</span>
                     </div>
-                    <span className="lg:hidden text-[7px] sm:text-[8px] font-bold mt-1.5 tracking-[0.1em] text-[#1eff00]">CLR</span>
+                    <span className="lg:hidden text-[7px] sm:text-[8px] font-bold mt-1.5 tracking-[0.1em] dark:text-[#1eff00] text-emerald-600">CLR</span>
                 </div>
             </div>
 

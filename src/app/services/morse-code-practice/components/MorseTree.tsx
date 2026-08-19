@@ -61,28 +61,28 @@ export default function MorseTree({ currentDecoded }: MorseTreeProps) {
     const neonGreen = "#1eff00";
 
     return (
-        <div className="bg-[#121212] rounded-[24px] border-t border-b border-[#2a2a2a] border-l border-r border-[#1a1a1a] shadow-[inset_0_4px_20px_rgba(0,0,0,0.8),_0_10px_30px_rgba(0,0,0,0.5)] p-4 h-full relative overflow-hidden flex flex-col items-center select-none font-mono">
+        <div className="dark:bg-[#121212] bg-gray-50 rounded-[24px] border border-gray-200 dark:border-t-[#2a2a2a] dark:border-b-[#2a2a2a] dark:border-l-[#1a1a1a] dark:border-r-[#1a1a1a] dark:shadow-[inset_0_4px_20px_rgba(0,0,0,0.8),_0_10px_30px_rgba(0,0,0,0.5)] shadow-inner p-4 h-full relative overflow-hidden flex flex-col items-center select-none font-mono transition-colors">
 
             {/* Decorative Screws */}
-            <div className="absolute top-4 left-4 w-3 h-3 rounded-full bg-gradient-to-br from-[#333] to-[#111] border border-[#222] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-black rotate-45 mt-1.5" /></div>
-            <div className="absolute top-4 right-4 w-3 h-3 rounded-full bg-gradient-to-br from-[#333] to-[#111] border border-[#222] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-black -rotate-12 mt-1.5" /></div>
-            <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full bg-gradient-to-br from-[#333] to-[#111] border border-[#222] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-black rotate-90 mt-1.5" /></div>
-            <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full bg-gradient-to-br from-[#333] to-[#111] border border-[#222] shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)]"><div className="w-full h-px bg-black rotate-180 mt-1.5" /></div>
+            <div className="absolute top-4 left-4 w-3 h-3 rounded-full dark:bg-gradient-to-br dark:from-[#333] dark:to-[#111] bg-gray-300 border dark:border-[#222] border-gray-400 dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] shadow-inner transition-colors"><div className="w-full h-px dark:bg-black bg-gray-500 rotate-45 mt-1.5" /></div>
+            <div className="absolute top-4 right-4 w-3 h-3 rounded-full dark:bg-gradient-to-br dark:from-[#333] dark:to-[#111] bg-gray-300 border dark:border-[#222] border-gray-400 dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] shadow-inner transition-colors"><div className="w-full h-px dark:bg-black bg-gray-500 -rotate-12 mt-1.5" /></div>
+            <div className="absolute bottom-4 left-4 w-3 h-3 rounded-full dark:bg-gradient-to-br dark:from-[#333] dark:to-[#111] bg-gray-300 border dark:border-[#222] border-gray-400 dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] shadow-inner transition-colors"><div className="w-full h-px dark:bg-black bg-gray-500 rotate-90 mt-1.5" /></div>
+            <div className="absolute bottom-4 right-4 w-3 h-3 rounded-full dark:bg-gradient-to-br dark:from-[#333] dark:to-[#111] bg-gray-300 border dark:border-[#222] border-gray-400 dark:shadow-[inset_0_2px_4px_rgba(0,0,0,0.8)] shadow-inner transition-colors"><div className="w-full h-px dark:bg-black bg-gray-500 rotate-180 mt-1.5" /></div>
 
             {/* Head Antenna & Header */}
             <div className="absolute top-4 w-full flex items-center justify-center z-10 pointer-events-none">
-                <span className="text-[#6bb] font-sans tracking-[0.3em] font-medium text-xs flex-1 text-right pr-5 uppercase opacity-60">MORSE</span>
+                <span className="dark:text-[#6bb] text-teal-600 font-sans tracking-[0.3em] font-medium text-xs flex-1 text-right pr-5 uppercase opacity-60 transition-colors">MORSE</span>
 
                 <div className="w-8 h-8 flex flex-col items-center">
-                    <svg viewBox="0 0 40 40" className="w-full h-full stroke-[#444] fill-none" strokeWidth="1.5">
+                    <svg viewBox="0 0 40 40" className="w-full h-full stroke-gray-400 dark:stroke-[#444] fill-none transition-colors" strokeWidth="1.5">
                         <path d="M 5,10 L 20,30 L 35,10" />
                         <path d="M 20,10 L 20,40" />
-                        <circle cx="20" cy="5" r="3" className="fill-[#1a1a1a] stroke-[#666]" />
+                        <circle cx="20" cy="5" r="3" className="dark:fill-[#1a1a1a] fill-gray-200 stroke-gray-400 dark:stroke-[#666] transition-colors" />
                         <path d="M 12,18 L 28,18" />
                     </svg>
                 </div>
 
-                <span className="text-[#1eff00] font-sans tracking-[0.3em] font-medium text-xs flex-1 pl-5 uppercase" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>CODE</span>
+                <span className="dark:text-[#1eff00] text-emerald-600 font-sans tracking-[0.3em] font-medium text-xs flex-1 pl-5 uppercase transition-colors" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>CODE</span>
             </div>
 
             {/* Circuit Layer & Nodes */}
@@ -106,10 +106,8 @@ export default function MorseTree({ currentDecoded }: MorseTreeProps) {
                                     key={`line-${node.id}`}
                                     d={`M ${parent.L} ${parent.T} L ${node.L} ${node.T}`}
                                     fill="none"
-                                    stroke={isActive ? neonGreen : "#2a2a2a"}
                                     strokeWidth={isActive ? "0.8" : "0.5"}
-                                    className="transition-colors duration-300"
-                                    style={isActive ? { filter: `drop-shadow(0 0 3px ${neonGreen})` } : {}}
+                                    className={`transition-all duration-300 ${isActive ? "stroke-emerald-600 dark:stroke-[#1eff00] drop-shadow-[0_0_2px_rgba(16,185,129,0.8)] dark:drop-shadow-[0_0_3px_#1eff00]" : "stroke-gray-300 dark:stroke-[#2a2a2a]"}`}
                                 />
                             );
                         })}
@@ -128,14 +126,14 @@ export default function MorseTree({ currentDecoded }: MorseTreeProps) {
                             style={{ left: `${node.L}%`, top: `${node.T}%` }}
                         >
                             {/* Node Geometric Shape */}
-                            <div className={`relative transition-all duration-300 z-10 ${isDash ? 'w-6 h-3 rounded-[3px]' : 'w-4 h-4 rounded-full'} ${isActive ? 'bg-[#1eff00] shadow-[0_0_15px_rgba(30,255,0,0.8),_inset_0_0_5px_rgba(255,255,255,0.8)] border-[#1eff00]'
-                                : 'bg-[#1c1c1c] shadow-[0_2px_4px_rgba(0,0,0,0.8),_inset_0_1px_2px_rgba(255,255,255,0.05)] border border-[#333]'
+                            <div className={`relative transition-all duration-300 z-10 ${isDash ? 'w-6 h-3 rounded-[3px]' : 'w-4 h-4 rounded-full'} ${isActive ? 'dark:bg-[#1eff00] bg-emerald-500 dark:shadow-[0_0_15px_rgba(30,255,0,0.8),_inset_0_0_5px_rgba(255,255,255,0.8)] shadow-[0_0_8px_rgba(16,185,129,0.6)] dark:border-[#1eff00] border-emerald-500'
+                                : 'dark:bg-[#1c1c1c] bg-white dark:shadow-[0_2px_4px_rgba(0,0,0,0.8),_inset_0_1px_2px_rgba(255,255,255,0.05)] shadow-sm border dark:border-[#333] border-gray-300'
                                 }`}>
 
                                 {/* Positioned Label */}
-                                <div className={`absolute select-none font-bold text-[10px] sm:text-[11px] font-sans ${isActive ? 'text-[#1eff00]' : 'text-[#888]'
+                                <div className={`absolute select-none font-bold text-[10px] sm:text-[11px] font-sans ${isActive ? 'dark:text-[#1eff00] text-emerald-600' : 'dark:text-[#888] text-gray-500'
                                     }`} style={{
-                                        ...(isActive ? { textShadow: `0 0 8px ${neonGreen}` } : {}),
+                                        ...(isActive ? { textShadow: `0 0 8px rgba(30,255,0,0.3)` } : {}),
                                         ...(node.pos === 't' ? { bottom: '100%', left: '50%', transform: 'translate(-50%, -4px)' } :
                                             node.pos === 'b' ? { top: '100%', left: '50%', transform: 'translate(-50%, +4px)' } :
                                                 node.pos === 'l' ? { right: '100%', top: '50%', transform: 'translate(-6px, -50%)' } :
