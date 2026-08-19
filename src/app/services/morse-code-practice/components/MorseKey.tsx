@@ -43,7 +43,6 @@ export default function MorseKey({ onSignal, onPressStart, onPressEnd, isSoundEn
         }
     }, [isPressed, onPressEnd, isSoundEnabled, onSignal]);
 
-    // Spacebar handling
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.code === "Space" && !e.repeat) {
@@ -68,11 +67,14 @@ export default function MorseKey({ onSignal, onPressStart, onPressEnd, isSoundEn
     }, [handlePressStart, handlePressEnd]);
 
     return (
-        <div className="flex flex-col items-center select-none touch-none">
+        <div className="flex flex-col items-center w-full max-w-lg select-none touch-none">
+
+            {/* Container simulating a metallic recess inset */}
             <div
-                className="relative w-64 h-32 bg-[#1a1a1a] rounded-3xl border border-white/10 shadow-inner flex items-center justify-center cursor-pointer group"
+                className="relative w-full h-[140px] bg-[#0c0c0c] rounded-[40px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.9),_0_2px_5px_rgba(255,255,255,0.05)] border border-[#1a1a1a] flex items-center justify-center cursor-pointer group mb-4 transition-all"
+                style={isPressed ? { boxShadow: "inset 0 15px 30px rgba(0,0,0,0.9), 0 0 40px rgba(30, 255, 0, 0.15), 0 2px 5px rgba(255,255,255,0.05)" } : {}}
                 onPointerDown={(e) => {
-                    e.preventDefault(); // Prevent touch scroll
+                    e.preventDefault();
                     handlePressStart();
                 }}
                 onPointerUp={(e) => {
@@ -83,31 +85,52 @@ export default function MorseKey({ onSignal, onPressStart, onPressEnd, isSoundEn
                 onPointerCancel={handlePressEnd}
                 onContextMenu={(e) => e.preventDefault()}
             >
-                {/* Glow behind the key when idle/hover/pressed */}
-                <div className={`absolute inset-0 rounded-3xl transition-opacity duration-300 ${isPressed ? 'opacity-100 bg-primary/20 shadow-[0_0_50px_rgba(59,130,246,0.3)]' : 'opacity-0 group-hover:opacity-50 bg-primary/5'}`} />
+                {/* Glow underneath the lever */}
+                <div className={`absolute bottom-4 left-1/2 -translate-x-1/2 w-[70%] h-[20px] bg-[#1eff00] blur-[25px] transition-opacity duration-150 ${isPressed ? 'opacity-80' : 'opacity-0 glow-hover'}`} />
+                <style jsx>{`
+          .glow-hover { opacity: 0; }
+          .group:hover .glow-hover { opacity: 0.15; }
+        `}</style>
 
-                {/* Physical Key Base */}
-                <div className="w-48 h-16 bg-gradient-to-b from-[#2a2a2a] to-[#111] rounded-xl flex items-center justify-center shadow-lg relative border border-white/5">
-                    {/* Key Knob (Moving Part) */}
-                    <div
-                        className={`w-32 h-10 bg-gradient-to-b from-[#333] to-[#222] rounded-lg border border-t-white/10 border-b-black/50 shadow-md flex items-center justify-center transition-all duration-75 ${isPressed ? 'translate-y-2 shadow-none border-primary/50 bg-[#252525]' : 'translate-y-0'}`}
-                    >
-                        {/* Metal Grip Detail */}
-                        <div className="w-20 h-2 flex justify-between">
-                            {[...Array(6)].map((_, i) => (
-                                <div key={i} className="w-1 h-full bg-black/30 rounded-full" />
-                            ))}
+                {/* The 3D Lever Apparatus */}
+                <div className="relative w-full h-full flex items-center">
+
+                    {/* Left Screw Mount */}
+                    <div className="absolute left-[15%] w-8 h-8 rounded-full bg-gradient-to-br from-[#2a2a2a] to-[#0a0a0a] shadow-[0_5px_10px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.1)] border border-[#1a1a1a] flex justify-center items-center">
+                        <div className="w-4 h-4 rounded-full bg-[#111] shadow-[inset_0_2px_5px_rgba(0,0,0,0.8)] border border-[#222]">
+                            <div className="w-full h-px bg-black mt-2 rotate-45" />
                         </div>
                     </div>
+
+                    {/* Vertical pivot standing up from the inset floor (optical illusion using gradients) */}
+                    <div className="absolute left-[25%] top-[50%] -translate-y-1/2 w-6 h-12 bg-gradient-to-r from-[#444] via-[#777] to-[#222] rounded-md shadow-[0_10px_20px_rgba(0,0,0,0.8)] border border-[#222]">
+                        {/* Pivot shadow */}
+                        <div className="w-full h-full bg-gradient-to-t from-black/80 to-transparent rounded-md" />
+                    </div>
+
+                    {/* Main Horizontal Metallic Lever Bar */}
+                    <div
+                        className="absolute left-[27%] right-[25%] h-8 bg-gradient-to-b from-[#b3b3b3] via-[#e6e6e6] to-[#737373] shadow-[0_10px_15px_rgba(0,0,0,0.8),_inset_0_2px_1px_rgba(255,255,255,0.9)] border-b border-[#333] transition-transform duration-[60ms] ease-out origin-left rounded-l-md rounded-r-3xl"
+                        style={{ transform: isPressed ? 'perspective(500px) rotateX(-8deg) translateY(4px)' : 'perspective(500px) rotateX(0deg) translateY(0px)' }}
+                    >
+                        {/* Surface texture / Reflection highlight */}
+                        <div className="absolute top-0 w-full h-[2px] bg-white/70 rounded-full" />
+                        <div className="absolute bottom-0 w-full h-[4px] bg-gradient-to-r from-transparent via-[#444] to-transparent mix-blend-multiply" />
+
+                        {/* The Black Knob at the end of the lever */}
+                        <div className="absolute -right-6 top-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-gradient-to-br from-[#333] to-[#050505] shadow-[0_10px_20px_rgba(0,0,0,0.9),_inset_-2px_-5px_15px_rgba(0,0,0,1),_inset_2px_5px_5px_rgba(255,255,255,0.1)] border border-[#1a1a1a] z-10 flex items-center justify-center">
+                            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#111] to-[#222] shadow-[inset_0_2px_5px_rgba(0,0,0,0.8)]" />
+                        </div>
+                    </div>
+
+                    {/* Instruction Text Below the lever inside the recess */}
+                    <p className="absolute bottom-3 w-full text-center text-[10px] sm:text-xs font-mono font-bold tracking-[0.2em] uppercase transition-colors"
+                        style={{ color: isPressed ? "#1eff00" : "#555", textShadow: isPressed ? "0 0 10px rgba(30, 255, 0, 0.4)" : "none" }}>
+                        PRESS & HOLD TO TRANSMIT
+                    </p>
                 </div>
             </div>
-            <p className="mt-4 text-xs font-semibold tracking-widest text-[#555] uppercase">
-                {isPressed ? (
-                    <span className="text-primary animate-pulse transition-colors">Transmitting...</span>
-                ) : (
-                    "Press & Hold to Transmit"
-                )}
-            </p>
+
         </div>
     );
 }
