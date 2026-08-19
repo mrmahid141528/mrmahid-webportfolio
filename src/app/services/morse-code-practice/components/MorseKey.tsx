@@ -83,7 +83,7 @@ export default function MorseKey({ onSignal, onPressStart, onPressEnd, isSoundEn
 
             {/* Container simulating a metallic recess inset */}
             <div
-                className="relative w-full h-[140px] bg-[#0c0c0c] rounded-[40px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.9),_0_2px_5px_rgba(255,255,255,0.05)] border border-[#1a1a1a] flex items-center justify-center cursor-pointer group mb-4 transition-all"
+                className="relative w-full h-[80px] md:h-[100px] lg:h-[120px] bg-[#0c0c0c] rounded-[20px] md:rounded-[30px] lg:rounded-[40px] shadow-[inset_0_15px_30px_rgba(0,0,0,0.9),_0_2px_5px_rgba(255,255,255,0.05)] border border-[#1a1a1a] flex items-center justify-center cursor-pointer group transition-all"
                 style={isPressed ? { boxShadow: "inset 0 15px 30px rgba(0,0,0,0.9), 0 0 40px rgba(30, 255, 0, 0.15), 0 2px 5px rgba(255,255,255,0.05)" } : {}}
                 onPointerDown={(e) => {
                     e.preventDefault();

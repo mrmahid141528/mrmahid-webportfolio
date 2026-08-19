@@ -6,9 +6,9 @@ interface SignalDisplayProps {
 
 export default function SignalDisplay({ currentSignal }: SignalDisplayProps) {
     return (
-        <div className="bg-[#121212] rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-5 mb-4 relative overflow-hidden">
-            <div className="flex items-center space-x-2 mb-3">
-                <h3 className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Signal</h3>
+        <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-4 mb-2 md:mb-3 relative overflow-hidden">
+            <div className="flex items-center space-x-2 mb-2">
+                <h3 className="text-[9px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Signal</h3>
                 <div className="w-1.5 h-1.5 rounded-full bg-[#1eff00] animate-pulse shadow-[0_0_8px_rgba(30,255,0,0.8)]" />
             </div>
 
