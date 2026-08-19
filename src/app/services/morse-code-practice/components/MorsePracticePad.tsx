@@ -142,7 +142,7 @@ export default function MorsePracticePad() {
             <div className="flex-1 w-full flex flex-col lg:grid lg:grid-cols-[1fr_320px] xl:grid-cols-[1fr_350px] gap-2 md:gap-4 lg:gap-6 px-0 lg:px-6 min-h-0 overflow-hidden pb-0 lg:pb-2">
 
                 {/* Left/Top Area: Morse Tree */}
-                <div className="order-1 lg:order-1 min-h-[160px] h-[30vh] sm:h-[40vh] lg:h-auto max-h-[450px] w-full relative min-h-0 overflow-hidden flex items-center justify-center">
+                <div className="order-1 lg:order-1 min-h-[160px] h-[30vh] sm:h-[40vh] lg:h-auto max-h-[450px] w-full relative">
                     <MorseTree currentDecoded={latestDecodedChar} />
                 </div>
 
