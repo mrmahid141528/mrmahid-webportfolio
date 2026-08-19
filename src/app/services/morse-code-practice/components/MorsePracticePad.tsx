@@ -93,13 +93,14 @@ export default function MorsePracticePad() {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.9 }}
-                                className="flex items-center justify-center px-2 md:px-4 py-1.5 md:py-2 bg-[#1eff00]/10 border border-[#1eff00]/30 rounded-full shadow-[0_0_15px_rgba(30,255,0,0.1)] whitespace-nowrap min-w-max"
+                                className="flex items-center justify-center whitespace-nowrap min-w-max animate-pulse"
                             >
-                                <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-[#1eff00] animate-pulse mr-1.5 md:mr-2" style={{ boxShadow: "0 0 8px #1eff00" }} />
-                                <span className="text-[8px] sm:text-[9px] md:text-xs font-bold font-mono tracking-[0.1em] md:tracking-widest text-[#1eff00] text-center" style={{ textShadow: "0 0 5px rgba(30,255,0,0.5)" }}>
-                                    <span className="hidden sm:inline">PRESS SPACE OR TAP TO WAKE</span>
-                                    <span className="sm:hidden">TAP TO WAKE</span>
-                                </span>
+                                <div className="w-2 h-2 md:w-3 md:h-3 rounded-full bg-[#1eff00] mr-2 md:mr-3" style={{ boxShadow: "0 0 10px #1eff00" }} />
+                                <h2 className="text-sm sm:text-base md:text-xl lg:text-2xl font-bold tracking-[0.2em] md:tracking-[0.3em] text-[#1eff00] uppercase leading-tight" style={{ textShadow: "0 0 15px rgba(30,255,0,0.6)" }}>
+                                    <span className="hidden lg:inline">PRESS SPACE OR TAP TO START</span>
+                                    <span className="hidden sm:inline lg:hidden">TAP / SPACE TO START</span>
+                                    <span className="sm:hidden">TAP TO START</span>
+                                </h2>
                             </motion.div>
                         )}
                     </AnimatePresence>
