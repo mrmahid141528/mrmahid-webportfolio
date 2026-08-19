@@ -4,67 +4,57 @@ interface MorseTreeProps {
     currentDecoded: string;
 }
 
-const lines = [
-    // T-junction at top
-    { x1: 50, y1: 15, x2: 50, y2: 20 },
-    { x1: 13, y1: 20, x2: 92, y2: 20 }, // Main Trunk
+type MorseNode = {
+    id: string,
+    type: 'dot' | 'dash',
+    L: number,
+    T: number,
+    pos: string,
+    parentId: string
+};
 
-    // Left G-line (between M & T)
-    { x1: 32, y1: 20, x2: 32, y2: 35 },
-    { x1: 13, y1: 35, x2: 32, y2: 35 },
-    { x1: 32, y1: 35, x2: 32, y2: 50 },
+const ROOT = { L: 50, T: 20 };
 
-    // Left N-line (between Antenna & T)
-    { x1: 44, y1: 20, x2: 44, y2: 85 }, // Trunk -> B
-    { x1: 26, y1: 52, x2: 44, y2: 52 }, // K -> N
-    { x1: 13, y1: 52, x2: 26, y2: 52 }, // Y -> K
-    { x1: 26, y1: 52, x2: 26, y2: 65 }, // K -> C
-    { x1: 22, y1: 72, x2: 44, y2: 72 }, // X -> D
+const nodes: MorseNode[] = [
+    // Right Trunk (Dots)
+    { id: 'E', type: 'dot', L: 60, T: 20, pos: 't', parentId: 'ROOT' },
+    { id: 'I', type: 'dot', L: 70, T: 20, pos: 't', parentId: 'E' },
+    { id: 'S', type: 'dot', L: 80, T: 20, pos: 't', parentId: 'I' },
+    { id: 'H', type: 'dot', L: 90, T: 20, pos: 't', parentId: 'S' },
 
-    // Right U/V-lines
-    { x1: 72, y1: 20, x2: 72, y2: 35 },
-    { x1: 72, y1: 35, x2: 72, y2: 46 }, // U -> F
-    { x1: 82, y1: 20, x2: 82, y2: 35 },
+    // Right Side Branches
+    { id: 'A', type: 'dash', L: 60, T: 55, pos: 'l', parentId: 'E' },
+    { id: 'W', type: 'dash', L: 60, T: 75, pos: 'l', parentId: 'A' },
+    { id: 'J', type: 'dash', L: 60, T: 85, pos: 'r', parentId: 'W' },
 
-    // Right A-line (between E & Antenna)
-    { x1: 56, y1: 20, x2: 56, y2: 85 }, // Trunk -> J
-    { x1: 56, y1: 52, x2: 88, y2: 52 }, // A -> R -> L
-    { x1: 56, y1: 72, x2: 69, y2: 72 }, // W -> P
-];
+    { id: 'R', type: 'dot', L: 70, T: 55, pos: 'b', parentId: 'A' },
+    { id: 'L', type: 'dot', L: 80, T: 55, pos: 'r', parentId: 'R' },
+    { id: 'P', type: 'dot', L: 70, T: 75, pos: 'r', parentId: 'W' },
 
-const nodes = [
-    { id: 'O', type: 'dash', L: 13, T: 20, pos: 't' },
-    { id: 'M', type: 'dash', L: 26, T: 20, pos: 't' },
-    { id: 'T', type: 'dash', L: 38, T: 20, pos: 't' },
-    { id: 'E', type: 'dot', L: 60, T: 20, pos: 't' },
-    { id: 'I', type: 'dot', L: 72, T: 20, pos: 't' },
-    { id: 'S', type: 'dot', L: 82, T: 20, pos: 't' },
-    { id: 'H', type: 'dot', L: 92, T: 20, pos: 't' },
+    { id: 'U', type: 'dash', L: 70, T: 35, pos: 'l', parentId: 'I' },
+    { id: 'F', type: 'dot', L: 77, T: 35, pos: 'r', parentId: 'U' },
 
-    { id: 'Q', type: 'dash', L: 13, T: 35, pos: 'b' },
-    { id: 'G', type: 'dot', L: 32, T: 35, pos: 'r' },
-    { id: 'U', type: 'dash', L: 72, T: 35, pos: 'l' },
-    { id: 'V', type: 'dash', L: 82, T: 35, pos: 'r' },
+    { id: 'V', type: 'dash', L: 80, T: 35, pos: 'r', parentId: 'S' },
 
-    { id: 'Z', type: 'dot', L: 32, T: 50, pos: 'r' },
-    { id: 'F', type: 'dot', L: 72, T: 46, pos: 'r' },
+    // Left Trunk (Dashes)
+    { id: 'T', type: 'dash', L: 40, T: 20, pos: 't', parentId: 'ROOT' },
+    { id: 'M', type: 'dash', L: 30, T: 20, pos: 't', parentId: 'T' },
+    { id: 'O', type: 'dash', L: 20, T: 20, pos: 't', parentId: 'M' },
 
-    { id: 'Y', type: 'dash', L: 13, T: 52, pos: 't' },
-    { id: 'K', type: 'dash', L: 26, T: 52, pos: 't' },
-    { id: 'N', type: 'dot', L: 44, T: 52, pos: 'r' },
-    { id: 'A', type: 'dash', L: 56, T: 52, pos: 'l' },
-    { id: 'R', type: 'dot', L: 69, T: 52, pos: 'b' },
-    { id: 'L', type: 'dot', L: 88, T: 52, pos: 'r' },
+    // Left Side Branches
+    { id: 'N', type: 'dot', L: 40, T: 55, pos: 'r', parentId: 'T' },
+    { id: 'D', type: 'dot', L: 40, T: 75, pos: 'r', parentId: 'N' },
+    { id: 'B', type: 'dot', L: 40, T: 85, pos: 'r', parentId: 'D' },
 
-    { id: 'C', type: 'dot', L: 26, T: 65, pos: 'r' },
+    { id: 'K', type: 'dash', L: 30, T: 55, pos: 't', parentId: 'N' },
+    { id: 'Y', type: 'dash', L: 20, T: 55, pos: 't', parentId: 'K' },
+    { id: 'C', type: 'dot', L: 30, T: 66, pos: 'r', parentId: 'K' },
 
-    { id: 'X', type: 'dash', L: 22, T: 72, pos: 'l' },
-    { id: 'D', type: 'dot', L: 44, T: 72, pos: 'r' },
-    { id: 'W', type: 'dash', L: 56, T: 72, pos: 'l' },
-    { id: 'P', type: 'dot', L: 69, T: 72, pos: 'r' },
+    { id: 'X', type: 'dash', L: 30, T: 75, pos: 'l', parentId: 'D' },
 
-    { id: 'B', type: 'dot', L: 44, T: 85, pos: 'r' },
-    { id: 'J', type: 'dash', L: 56, T: 85, pos: 'r' }
+    { id: 'G', type: 'dot', L: 30, T: 35, pos: 'r', parentId: 'M' },
+    { id: 'Q', type: 'dash', L: 20, T: 35, pos: 'b', parentId: 'G' },
+    { id: 'Z', type: 'dot', L: 30, T: 45, pos: 'r', parentId: 'G' },
 ];
 
 export default function MorseTree({ currentDecoded }: MorseTreeProps) {
@@ -99,17 +89,32 @@ export default function MorseTree({ currentDecoded }: MorseTreeProps) {
             <div className="relative w-full h-[calc(100%-2rem)] mt-6 pointer-events-none">
 
                 {/* SVG Circuit Lines */}
-                <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="absolute top-0 left-0 w-full h-full overflow-visible" style={{ filter: "drop-shadow(0px 2px 2px rgba(0,0,0,0.5))" }}>
-                    {lines.map((l, i) => (
-                        <line
-                            key={`fixed-line-${i}`}
-                            x1={`${l.x1}%`} y1={`${l.y1}%`}
-                            x2={`${l.x2}%`} y2={`${l.y2}%`}
-                            stroke="#444"
-                            strokeWidth="0.8"
-                        />
-                    ))}
-                </svg>
+                <div className="absolute inset-0 w-full h-full pointer-events-none">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none" className="w-full h-full overflow-visible" style={{ filter: "drop-shadow(0px 2px 2px rgba(0,0,0,0.5))" }}>
+
+                        {/* Antenna drop line explicitly to ROOT */}
+                        <path d={`M 50 15 L 50 20`} fill="none" stroke="#2a2a2a" strokeWidth="0.8" />
+
+                        {nodes.map(node => {
+                            const parent = node.parentId === 'ROOT' ? ROOT : nodes.find(n => n.id === node.parentId);
+                            if (!parent) return null;
+
+                            const isActive = currentDecoded === node.id;
+
+                            return (
+                                <path
+                                    key={`line-${node.id}`}
+                                    d={`M ${parent.L} ${parent.T} L ${node.L} ${node.T}`}
+                                    fill="none"
+                                    stroke={isActive ? neonGreen : "#2a2a2a"}
+                                    strokeWidth={isActive ? "0.8" : "0.5"}
+                                    className="transition-colors duration-300"
+                                    style={isActive ? { filter: `drop-shadow(0 0 3px ${neonGreen})` } : {}}
+                                />
+                            );
+                        })}
+                    </svg>
+                </div>
 
                 {/* Nodes Layer */}
                 {nodes.map(node => {
