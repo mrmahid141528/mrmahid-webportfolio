@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Volume2, VolumeX, RotateCcw, HelpCircle } from "lucide-react";
+import { Volume2, VolumeX, RotateCcw, HelpCircle, Copy, Check } from "lucide-react";
 import MorseKey from "./MorseKey";
 import SignalDisplay from "./SignalDisplay";
 import MorseTree from "./MorseTree";
@@ -18,8 +18,22 @@ export default function MorsePracticePad() {
     const [showHelp, setShowHelp] = useState(false);
     const [status, setStatus] = useState<"READY" | "TRANSMITTING" | "DECODING">("READY");
     const [isAwake, setIsAwake] = useState(false);
+    const [copiedOutput, setCopiedOutput] = useState(false);
+    const [copiedMorse, setCopiedMorse] = useState(false);
 
     const inactivityTimer = useRef<NodeJS.Timeout | null>(null);
+
+    const handleCopyOutput = () => {
+        navigator.clipboard.writeText(decodedOutput || "SOS");
+        setCopiedOutput(true);
+        setTimeout(() => setCopiedOutput(false), 2000);
+    };
+
+    const handleCopyMorse = () => {
+        navigator.clipboard.writeText(completedMorse || "... --- ...");
+        setCopiedMorse(true);
+        setTimeout(() => setCopiedMorse(false), 2000);
+    };
 
     const handleSignal = useCallback((signal: "." | "-") => {
         setCurrentSignal(prev => {
@@ -143,8 +157,13 @@ export default function MorsePracticePad() {
                     <div className="flex flex-row lg:flex-col gap-2 lg:gap-5 flex-1 min-h-[80px] lg:min-h-0">
                         {/* OUTPUT DISPLAY */}
                         <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 lg:p-6 relative overflow-hidden flex-1 lg:flex-[2] flex flex-col h-[60px] sm:h-[80px] lg:h-auto min-h-[60px]">
-                            <h3 className="absolute top-2 left-3 md:top-4 md:left-5 text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888] z-10 bg-[#121212] pr-2">Output</h3>
-                            <div className="w-full flex-1 overflow-y-auto overflow-x-hidden flex items-end lg:items-center mt-3 lg:mt-6">
+                            <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-2">
+                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">Output</h3>
+                                <button onClick={handleCopyOutput} className="text-[#555] hover:text-[#1eff00] transition-colors" title="Copy Output">
+                                    {copiedOutput ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#1eff00]" /> : <Copy className="w-3 h-3 md:w-3.5 md:h-3.5" />}
+                                </button>
+                            </div>
+                            <div className="w-full flex-1 overflow-y-auto overflow-x-hidden flex items-start">
                                 <div className="text-xl sm:text-3xl lg:text-5xl font-mono font-bold text-[#1eff00] tracking-[0.2em] break-words text-left w-full leading-tight" style={{ textShadow: "0 0 15px rgba(30, 255, 0, 0.6)" }}>
                                     {decodedOutput || <span className="text-white/5 uppercase">SOS</span>}
                                     {status !== 'READY' && <span className="inline-block w-2 md:w-3 lg:w-4 h-4 sm:h-5 lg:h-8 bg-[#1eff00] animate-pulse ml-1 align-baseline translate-y-1 lg:translate-y-0" style={{ boxShadow: "0 0 10px #1eff00" }} />}
@@ -154,8 +173,13 @@ export default function MorsePracticePad() {
 
                         {/* SEQUENCE DISPLAY */}
                         <div className="bg-[#121212] rounded-[16px] md:rounded-[20px] shadow-[inset_0_4px_15px_rgba(0,0,0,0.8),_0_5px_15px_rgba(0,0,0,0.5)] border-t border-[#222] border-l border-r border-[#1a1a1a] p-3 md:p-5 relative overflow-hidden flex-1 lg:flex-none lg:h-[130px] flex flex-col h-[60px] sm:h-[80px] min-h-[60px]">
-                            <h3 className="absolute top-2 left-3 text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888] mb-1 md:mb-2 z-10 bg-[#121212] pr-2">History</h3>
-                            <div className="flex-1 w-full overflow-y-auto overflow-x-hidden shrink flex items-end mt-3 lg:mt-6">
+                            <div className="flex justify-between items-center bg-[#121212] z-10 w-full mb-1">
+                                <h3 className="text-[8px] md:text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#888]">History</h3>
+                                <button onClick={handleCopyMorse} className="text-[#555] hover:text-[#1eff00] transition-colors" title="Copy Sequence">
+                                    {copiedMorse ? <Check className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#1eff00]" /> : <Copy className="w-3 h-3 md:w-3.5 md:h-3.5" />}
+                                </button>
+                            </div>
+                            <div className="flex-1 w-full overflow-y-auto overflow-x-hidden shrink flex items-start">
                                 <div className="text-xs sm:text-sm md:text-xl text-[#1eff00] font-bold tracking-[0.2em] md:tracking-[0.3em] font-mono break-words opacity-90 w-full pl-1 leading-snug" style={{ textShadow: "0 0 10px rgba(30, 255, 0, 0.4)" }}>
                                     {completedMorse || <span className="text-white/5">... --- ...</span>}
                                 </div>
