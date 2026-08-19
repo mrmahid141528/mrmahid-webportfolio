@@ -14,7 +14,16 @@ class MorseAudioEngine {
 
             this.gainNode = this.ctx.createGain();
             this.gainNode.connect(this.ctx.destination);
-            this.gainNode.gain.value = 0;
+
+            // Set initial volume to 0 (silent) securely immediately
+            this.gainNode.gain.setValueAtTime(0, this.ctx.currentTime);
+
+            // Create and start the oscillator ONCE. It runs continuously in the background silently.
+            this.oscillator = this.ctx.createOscillator();
+            this.oscillator.type = 'sine';
+            this.oscillator.frequency.value = this.frequency;
+            this.oscillator.connect(this.gainNode);
+            this.oscillator.start();
         }
 
         if (this.ctx.state === 'suspended') {
@@ -25,28 +34,21 @@ class MorseAudioEngine {
     public startTone() {
         if (this.isPlaying || !this.ctx || !this.gainNode) return;
 
-        // Recreate oscillator on every press (they are one-time use in Web Audio)
-        this.oscillator = this.ctx.createOscillator();
-        this.oscillator.type = 'sine';
-        this.oscillator.frequency.value = this.frequency;
+        // Ensure the context wakes up instantly on iOS if it was suspended automatically
+        if (this.ctx.state === 'suspended') {
+            this.ctx.resume();
+        }
 
-        this.oscillator.connect(this.gainNode);
-        this.oscillator.start();
-
-        // Smooth attack and release to avoid clicking popping noises
-        this.gainNode.gain.setTargetAtTime(0.5, this.ctx.currentTime, 0.015);
+        // Extremely fast attack to eliminate latency, but a tiny 5ms slope to prevent audio 'clicks'
+        this.gainNode.gain.setTargetAtTime(0.5, this.ctx.currentTime, 0.005);
         this.isPlaying = true;
     }
 
     public stopTone() {
-        if (!this.isPlaying || !this.ctx || !this.gainNode || !this.oscillator) return;
+        if (!this.isPlaying || !this.ctx || !this.gainNode) return;
 
-        this.gainNode.gain.setTargetAtTime(0, this.ctx.currentTime, 0.015);
-
-        // Keep it alive safely just a tiny bit to finish the fade
-        this.oscillator.stop(this.ctx.currentTime + 0.1);
-        this.oscillator.disconnect();
-        this.oscillator = null;
+        // Extremely fast release
+        this.gainNode.gain.setTargetAtTime(0, this.ctx.currentTime, 0.005);
         this.isPlaying = false;
     }
 }

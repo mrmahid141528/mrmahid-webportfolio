@@ -2,9 +2,36 @@ import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import ThemeProvider from '@/components/layout/ThemeProvider';
 import ThemeToggle from '@/components/ui/ThemeToggle';
-export const metadata = {
-    title: 'Client Services | Md Mahid Raza',
-    description: 'Premium web design and development client portal.',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Client Services & Professional Web Tools | Md Mahid Raza',
+    description: 'Explore premium web design services, full-stack development, and interactive professional tools like the Morse Code Practice Pad by Md Mahid Raza.',
+    keywords: [
+        'Web Design Services',
+        'Full-Stack Developer',
+        'Next.js Developer',
+        'Interactive Web Tools',
+        'Md Mahid Raza',
+        'Custom Web Applications',
+        'Client Portal'
+    ],
+    openGraph: {
+        title: 'Client Services & Professional Web Tools | Md Mahid Raza',
+        description: 'Explore premium web design services, full-stack development, and interactive professional tools.',
+        url: 'https://mrmahid.com/services',
+        siteName: 'Md Mahid Raza Portfolio',
+        locale: 'en_US',
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Client Services & Professional Web Tools | Md Mahid Raza',
+        description: 'Explore premium web design services, full-stack development, and interactive professional tools.',
+    },
+    alternates: {
+        canonical: 'https://mrmahid.com/services',
+    }
 };
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {

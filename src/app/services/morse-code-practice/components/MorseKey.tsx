@@ -92,7 +92,17 @@ export default function MorseKey({ onSignal, onPressStart, onPressEnd, isSoundEn
                     e.preventDefault();
                     handlePressEnd();
                 }}
+                onTouchStart={(e) => {
+                    // Touch events fire faster on iOS than pointer events
+                    // Default action (scroll/click) is handled via CSS touch-none, but we guarantee it here
+                    handlePressStart();
+                }}
+                onTouchEnd={(e) => {
+                    e.preventDefault();
+                    handlePressEnd();
+                }}
                 onPointerLeave={handlePressEnd}
+                onTouchCancel={handlePressEnd}
                 onPointerCancel={handlePressEnd}
                 onContextMenu={(e) => e.preventDefault()}
             >
